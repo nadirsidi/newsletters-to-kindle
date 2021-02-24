@@ -1,0 +1,1707 @@
+Delivered-To: nadirsidi@gmail.com
+Received: by 2002:a05:6a11:19c:0:0:0:0 with SMTP id eu28csp2782452pxb;
+        Tue, 23 Feb 2021 09:36:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxI2gwaH8ubOK2smOMfJg7cqYher5WcvXECOMU+HnHiE0AzBtIbZ7rQeEv/vmt8Dl58sV2r
+X-Received: by 2002:ac8:564f:: with SMTP id 15mr2760717qtt.148.1614101775804;
+        Tue, 23 Feb 2021 09:36:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614101775; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lx4N2I9jb1vR6MgsEyrnLqew/HRsIKOFZQa4kPNVC1Q4XXt11KTPIL3hNLpehi+MeE
+         P4qiSgagPj0nEDShY4qUD4ud1NHxHTaYQFoJCf7iV9hJmieKbTQmKggw8vQcsmkfKv8Q
+         68jd4KDl/jhhVxMFnJH9eHGaA/Jv1eorQivENEMhqBHxzT4XU+z4Y051gmjsXQLZcIc3
+         6rSWYksrCwLZa5VKTbFoJmhbZQEjdExC5S4AgKNT3SxswJgA2Wh7A1dPyLrhpPbXNA/T
+         dApmeDVuuhj+hjyNNLnj4plr2JIiGlTzC04L2KZIiLM7m5mD8T8W1HhEEJxtD941iOMw
+         hBaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:precedence:mime-version:subject:message-id:to:from
+         :date:dkim-signature;
+        bh=kRr9nP1ju1gDQ9rt4mrlNwEQERhuNn2lk2ksYXEteSw=;
+        b=ic/mcKKcoYDEgWZxra0eD6GJ3gn0bRZOMTc/3GAaFW9uKswksdKRLRm4XBgx3f59d6
+         5Vo/NVSnHNw6kEiujHIWGNxQ4xattl9EvtTA0Kizrd2+QVjxAPA3hALtZgaEysFv6iM3
+         iRMdLwnX41I4PE1/haWE8FFRPSoajIgcClcxYZJNLR8D5f4hBYRM0dzHG9dl0BEbm2GJ
+         vHDRM1QN9LcMUFWpnaAsuHKILEGC98ysTSsxBH8UJZ+RHL6aX00LXubV6Xq+L8oyrynu
+         AGdLE395EASBrLz+0ppIVbvhYKbcyRWOoHQTiluHoFwGG8iRFOpB5tpyOZEPGQ9y8HPG
+         z9Ow==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.bloombergview.com header.s=sailthru header.b=BuUt229B;
+       spf=pass (google.com: domain of delivery_20210223122629.23024110.100944@mx.sailthru.com designates 192.64.237.222 as permitted sender) smtp.mailfrom=delivery_20210223122629.23024110.100944@mx.sailthru.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=bloombergview.com
+Return-Path: <delivery_20210223122629.23024110.100944@mx.sailthru.com>
+Received: from pmta29.sailthru.com (pmta29.sailthru.com. [192.64.237.222])
+        by mx.google.com with ESMTPS id w6si11483041qta.223.2021.02.23.09.36.12
+        for <nadirsidi@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 23 Feb 2021 09:36:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of delivery_20210223122629.23024110.100944@mx.sailthru.com designates 192.64.237.222 as permitted sender) client-ip=192.64.237.222;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.bloombergview.com header.s=sailthru header.b=BuUt229B;
+       spf=pass (google.com: domain of delivery_20210223122629.23024110.100944@mx.sailthru.com designates 192.64.237.222 as permitted sender) smtp.mailfrom=delivery_20210223122629.23024110.100944@mx.sailthru.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=bloombergview.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; s=sailthru; d=mail.bloombergview.com;
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe; i=noreply@mail.bloombergview.com;
+ bh=ec1iAkTrj2zw0GZGre2b2Tk9QtU=;
+ b=BuUt229B0s0s2A37sWmRAbJ6Q2sG27/80z9kivuYC45p+foxn51u9al5WEb3qCs315QqrZV24KOE
+   fOYO8qs5lzq36PbfhDvj7s7eouqmLIdH/y/ZePm0zyYGRtzlVLbdTGbdyGov6Dr5UiGn53/gQnfh
+   WFdB4vB5cCj+gRNK9Bc=
+Received: from nj2mta-15.sailthru.com (204.153.121.15) by pmta29.sailthru.com id h6kugq1qqbs1 for <nadirsidi@gmail.com>; Tue, 23 Feb 2021 12:27:08 -0500 (envelope-from <delivery_20210223122629.23024110.100944@mx.sailthru.com>)
+Date: Tue, 23 Feb 2021 12:26:29 -0500 (EST)
+From: Matt Levine <noreply@mail.bloombergview.com>
+To: nadirsidi@gmail.com
+Message-ID: <20210223122629.23024110.100944@sailthru.com>
+Subject: =?utf-8?B?TW9uZXkgU3R1ZmY6IFNQQUMgSW52ZQ==?=
+ =?utf-8?B?c3RvcnMgRG9u4oCZdCBMb3ZlIEx1Y2lk?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_Part_2154061_1119158830.1614101189602"
+Precedence: bulk
+X-Feedback-ID: 6358:23024110:campaign:sailthru
+X-TM-ID: 20210223122629.23024110.100944
+X-Info: Message sent by sailthru.com customer Bloomberg Business
+X-Info: We do not permit unsolicited commercial email
+X-Info: Please report abuse by forwarding complete headers to
+X-Info: abuse@sailthru.com
+X-Mailer: sailthru.com
+X-JMailer: nj1-illcherry.flt
+X-Unsubscribe-Web: https://link.mail.bloombergbusiness.com/oc/5d2dffebecf12a0dad4db039dphim.25w0/b8ed759a
+List-Unsubscribe: <https://link.mail.bloombergbusiness.com/oc/5d2dffebecf12a0dad4db039dphim.25w0/b8ed759a>, <mailto:unsubscribe_20210223122629.23024110.100944@mx.sailthru.com>
+X-rpcampaign: stjko23024110
+
+------=_Part_2154061_1119158830.1614101189602
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+  @media (prefers-color-scheme: dark) {
+}
+[data-ogsc] body {}]]>
+ =20
+ =20
+  Money Stuff
+.body-copy a:visited {
+color: black; text-decoration: none !important; border-bottom: 1px solid bl=
+ack; background-color: #ccc;
+}
+.sponsored-ad--text--body a:visited {
+color: black; text-decoration: none !important; border-bottom: 1px solid bl=
+ack; background-color: #ccc;
+}
+h1 a:visited {
+text-decoration: none; color: #000000;
+}
+img {
+max-width: 550px;
+}
+]]]]>>]]>
+
+
+ =20
+ =20
+   =20
+     =20
+       =20
+         =20
+           =20
+             =20
+               =20
+             =20
+           =20
+         =20
+       =20
+       =20
+         =20
+           =20
+   =20
+       =20
+           =20
+               =20
+                   =20
+               =20
+           =20
+       =20
+   =20
+
+         =20
+       =20
+     =20
+     =20
+     =20
+ =20
+   =20
+      SPAC SPAC SPACA special purpose acquisition company is a blank-check =
+company that raises money from investors in an initial public offering, put=
+s the money in a pot, and uses the pot to buy a stake in some existing priv=
+ate company, merging with that company (in a =E2=80=9Cde-SPAC merger=E2=80=
+=9D) and taking it public.=C2=A0Traditionally the SPAC does its IPO at $10 =
+per share; if it sells 100 million shares then it will have=C2=A0$1 billion=
+ in its pot. It will go out and find a private company and negotiate with i=
+t, and the negotiations will be over how big a stake the SPAC gets for its =
+money. The SPAC has a billion dollars; it will go to the private company an=
+d say, for instance, =E2=80=9Cwe think you are a $4 billion company, if we =
+give you $1 billion you=E2=80=99ll be a $5 billion company, so our $1 billi=
+on should buy 20% of your stock, so after we merge you should have 500 mill=
+ion shares outstanding of which our SPAC shareholders should own=C2=A0100 m=
+illion.=E2=80=9D[1] And the company says =E2=80=9Cno we are a $9 billion co=
+mpany, if you give us $1 billion we=E2=80=99ll be a $10 billion company, so=
+ your $1 billion should buy 10% of our stock, so after we merge we=E2=80=99=
+ll have 1 billion shares outstanding of which your SPAC shareholders should=
+ own 100 million.=E2=80=9D And then they go from there and hopefully find a=
+ compromise price everyone can live with.=C2=A0And there will usually be a =
+PIPE, a private investment in public equity, alongside the de-SPAC merger d=
+eal: Some big institutional investors will put in new money to buy shares d=
+irectly, so that the newly public company raises money not only from the SP=
+AC but also from other big institutions. So perhaps the final deal will be =
+a $6 billion pre-money valuation plus $1 billion from the SPAC and $1 billi=
+on from PIPE investors, for a total valuation of $8 billion; SPAC investors=
+ will get about 12.5% of the company (one-eighth, the amount of cash they p=
+ut in divided by the total valuation), the PIPE investors will get another =
+12.5%, and the existing private shareholders will keep the other 75%.Then t=
+hey will announce the deal and hopefully the stock=E2=80=94the SPAC stock, =
+which is already public=E2=80=94will trade up. The deal will be well receiv=
+ed; investors will think the company is worth more than the agreed valuatio=
+n. Perhaps the market will say the company is worth $10 billion, which mean=
+s that the SPAC shareholders=E2=80=99 12.5% stake is worth $1.25 billion, w=
+hich means that each $10 SPAC share should trade to $12.50.=C2=A0This is th=
+e same basic mechanism as a traditional initial public offering. The people=
+ who agree to buy a private company=E2=80=99s shares at the moment it becom=
+es public  are taking a risk and doing the private company a favor; they ex=
+pect to be able to buy those shares at a bit of a discount. After the compa=
+ny goes public=E2=80=94in an IPO or a de-SPAC merger=E2=80=94the stock shou=
+ld trade up, to reward the initial purchasers. In an IPO this is called the=
+ =E2=80=9CIPO pop,=E2=80=9D and it is much  criticized by venture capitalis=
+ts. In a SPAC this phenomenon doesn=E2=80=99t exactly have a name, but it o=
+bviously exists and is the basis for the current SPAC mania. If investors d=
+idn=E2=80=99t think =E2=80=9Cbuying SPAC stock at $10 gives us a ticket to =
+get some cool private company at a discount,=E2=80=9D they wouldn=E2=80=99t=
+ be excitedly buying SPAC stocks; there would not be a dozen SPACs  going p=
+ublic each day, and multiple exchange-traded funds competing to package SPA=
+Cs for investors, and generally a ton of excitement for SPACs. (Of course t=
+here is no guarantee of anything; some IPOs open below their IPO price, and=
+ some SPACs trade down as investors are disappointed by the deals they make=
+.[2] But the usual expectation, at least for hot companies=C2=A0in the curr=
+ent hot market, is for these things to trade up initially.)The thing about =
+SPACs, though,=C2=A0is that shares in the SPAC=E2=80=94the pot of money=E2=
+=80=94trade on the stock exchange=C2=A0before=C2=A0the merger is announced.=
+ If you are aware of the basic SPAC-pop dynamic=E2=80=94if you have watched=
+ other high-profile SPAC deals get done and their stocks trade up=E2=80=94y=
+ou might look at a pre-merger SPAC of a well-known sponsor and say =E2=80=
+=9Cwell, this SPAC is just a pot of money, and I don=E2=80=99t know what co=
+mpany it is going to merge with, but it=E2=80=99s going to merge with=C2=A0=
+some=C2=A0company, and it will get a good price, so after the merger these =
+shares will be worth $12.50 or something.=E2=80=9D And so you might be will=
+ing to pay, say, $10.50 or $11 or $12 or $12.49 for the SPAC=E2=80=99s shar=
+es today, even though today they just represent a claim on $10 worth of cas=
+h. You can pre-purchase the =E2=80=9CSPAC pop,=E2=80=9D as it were.=C2=A0Yo=
+u could take this logic further. You could say: =E2=80=9CWell, this SPAC is=
+ just a pot of money, and I don=E2=80=99t know what company it is going to =
+merge with, but I suspect it=E2=80=99s going to be a hot electric-vehicle c=
+ompany, and hot electric-vehicle companies have particularly obscene SPAC p=
+ops because the market absolutely loves SPACs and EVs right now, so I think=
+ that the sponsor will pay $10 for shares that=C2=A0will trade up to $50, s=
+o I am going to pay $49.99 for them now.=E2=80=9D You=E2=80=99ll pay $49.99=
+ for a pot of cash worth $10. And, to be clear, this can be a perfectly rat=
+ional trade: You=E2=80=99re not=C2=A0just=C2=A0buying a $10 pot of cash for=
+ $49.99; you=E2=80=99re also buying the high likelihood that that pot of ca=
+sh will be used to buy underpriced shares of a hot private electric-vehicle=
+ company. The right SPAC can do that, but you can=E2=80=99t do that with $1=
+0 in your checking account, so the $10 in the SPAC=E2=80=99s hands really i=
+s worth more than $10.But what is the=C2=A0electric-vehicle company to make=
+ of all this? A SPAC sponsor comes to the EV company and says =E2=80=9Cwe=
+=E2=80=99ll give you $10 per share for your stock, let=E2=80=99s negotiate =
+about how much stock that will buy us.=E2=80=9D And then they=C2=A0debate v=
+aluations; the company argues it is=C2=A0worth a lot, while the sponsor say=
+s it=E2=80=99s=C2=A0worth less. But at some point the company=C2=A0says to =
+the sponsor: =E2=80=9CLook, you=E2=80=99re asking to buy our stock at $10 p=
+er share, to give it to your shareholders, who paid you $10 per share for i=
+t. But I can look on the stock exchange and see that your stock is trading =
+at $50 per share right now. I know that, to avoid disappointing your shareh=
+olders, you have to get back stock worth $50 for the $10 you put in, and I =
+don=E2=80=99t want to sell you stock at an 80% discount.=E2=80=9D It is a f=
+air objection. If the EV company sells shares worth, say, $25 to the SPAC, =
+and gets back $10 per share, then (1) the EV company is getting kind of rip=
+ped off (it=E2=80=99s selling $25 stock for $10), but (2) the SPAC sharehol=
+ders are also getting kind of ripped off (they bought $25 stock for $50). T=
+he SPAC shareholders have only themselves to blame, really=E2=80=94they=E2=
+=80=99re the ones who paid $50 for a $10 stake in a pot of cash=E2=80=94but=
+ it is not a great dynamic. Anyway:Shares of the blank-check firm combining=
+ with electric-vehicle startup Lucid Motors Inc. plunged in U.S. trading af=
+ter confirming the biggest SPAC merger yet to cash in on investor enthusias=
+m for battery-powered cars.Churchill Capital Corp IV, the special-purpose a=
+cquisition company run by financier Michael Klein, fell as much as 46% on T=
+uesday after confirming its merger with Lucid. The deal will generate about=
+ $4.4 billion in cash for the 14-year-old carmaker, which announced product=
+ion of its debut model will be delayed to the second half of this year.The =
+slump follows a dramatic 472% run-up in the shares since Bloomberg first re=
+ported on Jan. 11 that Lucid and Churchill were in talks. Lucid has shied a=
+way from comparisons to market leader Tesla Inc., but the public listing at=
+ a pro-forma equity value of $24 billion positions it to compete for a slic=
+e of what=E2=80=99s expected to become a rapidly growing market for EVs. It=
+ plans to use the newly acquired funds to bring vehicles to market and expa=
+nd its factory in Casa Grande, Arizona.Lucid Motors Inc. is merging with a =
+blank-check company run by financier Michael Klein that values the combined=
+ entity at a pro-forma equity value of $24 billion, the biggest in a series=
+ of deals involving electric-vehicle startups cashing in on investor appeti=
+te for battery-powered cars. =E2=80=A6The reverse-merger represents the lar=
+gest injection of capital into Lucid since Saudi Arabia=E2=80=99s Public In=
+vestment Fund invested more than $1 billion in 2018. The agreement included=
+ a $2.5 billion private placement in public equity, or PIPE, the largest of=
+ its kind on record for a deal with a special-purpose acquisition company. =
+It was led by existing investor PIF as well as BlackRock, Fidelity Manageme=
+nt, Franklin Templeton, Neuberger Berman, Wellington Management and Winslow=
+ Capital, according to a joint statement from Lucid and Churchill Capital C=
+orp IV, the acquisition company.The placement sold at $15 a share -- a 50% =
+premium to Churchill=E2=80=99s net asset value -- which translates into abo=
+ut $24 billion in pro-forma equity value, the companies said. The combined =
+company has a transaction equity value of $11.8 billion.What a bizarre deal=
+. Lucid is selling shares to the Churchill SPAC at $10 per share. It=E2=80=
+=99s selling shares to the PIPE investors at $15 per share. Those shares ar=
+e worth, say, $35, roughly where the SPAC=C2=A0was trading at 10 a.m. today=
+, after the deal announcement.=C2=A0Lucid is selling shares at a huge disco=
+unt to the PIPE investors, and at an even huger discount to the SPAC invest=
+ors.[3] If a hot tech company did an IPO at $10 per share and its stock imm=
+ediately traded up to $35, venture capitalists would get on Twitter to say =
+that Wall Street is ripping off startups, that the IPO system is irreparabl=
+y broken, that this=C2=A0two hundred fifty percent underpricing=C2=A0is evi=
+dence of an evil=C2=A0conspiracy. Here though it=E2=80=99s just how SPACs w=
+ork, and everyone loves SPACs.Meanwhile, though, the SPAC investors were ex=
+pecting to get back shares worth $57.37 (the closing price yesterday), so g=
+etting back shares worth $35 is a huge disappointment.Here are the press re=
+lease, Lucid=E2=80=99s and Churchill=E2=80=99s investor deck for the deal, =
+and=C2=A0the 8-K. The transaction structure is on page 62 of the deck; page=
+ 63 explains that the deal represents an =E2=80=9CAttractive Entry Valuatio=
+n =E2=80=94=C2=A0Significant Discount to Other Entrants.=E2=80=9D What that=
+ means is that the deal values Lucid at 5.3 times estimated 2022 revenues (=
+2.1 times estimated 2023 revenues),=C2=A0at $10 per share, which is lower t=
+han Tesla (12.9x), Fisker, Nio and other hot electric-vehicle companies.=C2=
+=A0(The revenue projections are on page 67, and they plan on a lot of growt=
+h, from $97 million in 2021 to $2.2 billion in 2022; the deal values Lucid =
+at 121.1x estimated 2021 revenue.) If you are buying Lucid at $10 per share=
+=E2=80=94as, I guess, the SPAC sponsors are=E2=80=94then that=E2=80=99s the=
+ right valuation. If you=E2=80=99re buying at $15 per share=E2=80=94as the =
+PIPE investors are=E2=80=94then you=E2=80=99re paying more like 7.9x (3.2x)=
+ estimated 2022 (2023) revenue. If you=E2=80=99re buying at $35 per share=
+=E2=80=94as buyers of SPAC shares were this morning=E2=80=94then it=E2=80=
+=99s 18.5x (7.4x). If you bought=C2=A0at $57.37 per share=E2=80=94as buyers=
+ of the SPAC did yesterday, before the deal was announced=E2=80=94then you =
+paid about 30.4x estimated 2022 revenue, a much higher multiple than any of=
+ the competitors.=C2=A0Lucid is selling shares to the SPAC at a reasonable =
+valuation (if you believe the projections). But the SPAC shareholders are=
+=C2=A0buying=C2=A0shares at a much higher valuation. There is just a huge g=
+ap here, a gap between what the SPAC shareholders pay and what the company =
+receives. The extra money goes to people who bought SPAC shares earlier=E2=
+=80=94at $10=E2=80=94and then sold them as the price soared before the deal=
+ was announced. A ton of value has been extracted from the system, money th=
+at was effectively paid by Lucid=E2=80=99s new shareholders but won=E2=80=
+=99t go to Lucid.Perhaps this is more efficient than a traditional IPO? See=
+ms weird, but it=C2=A0accomplishes one crucial thing for Lucid, which is th=
+at it allows Lucid to go public based on projected 2023 revenue.=C2=A0Norma=
+l IPOs are focused on audited financial statements covering years that have=
+ already happened; future projections are strongly discouraged. Meanwhile S=
+PACs are allowed to include projections, and in fact Lucid=E2=80=99s deck d=
+oesn=E2=80=99t include=C2=A0any=C2=A0historical financials; the =E2=80=9CSu=
+mmary P&L=E2=80=9D slide (page 67) starts with estimated 2021 numbers. It=
+=E2=80=99s hard to do a regular IPO for a car company that has never sold a=
+ car, but you can do a SPAC. But it will cost you.Infinity oopsIf you run a=
+ mutual fund, and you own a bunch of stocks, you calculate your fund=E2=80=
+=99s net asset value each day. It=E2=80=99s a pretty easy calculation: You =
+take the price of each stock, multiply by the number of shares you own, and=
+ add up the results; that gives the NAV of your fund. Then you divide that =
+by the number of shares your fund has outstanding, which gives you the NAV =
+per share.If someone wants to redeem out of your mutual fund, they come to =
+you and hand you their shares, and you hand them back cash equal to the NAV=
+. It is very important that you get the NAV right: If your calculation of N=
+AV is too high (too low), you will pay redeeming holders too much (too litt=
+le) for their shares, meaning that there will be too little (too much) left=
+ in your fund for the remaining holders, meaning that you=E2=80=99ll be che=
+ating the remaining (redeeming) holders out of their fair share of the valu=
+e. Also of course the=C2=A0performance=C2=A0of your fund is just the track =
+record of changes in NAV; if you calculate a NAV that is too high then your=
+ fund will look like it performed better than it did, and you will attract =
+investment under false pretenses.Again, though, it=E2=80=99s pretty easy to=
+ calculate the NAV of a stock fund. It=E2=80=99s harder if you own bonds, s=
+ome of which don=E2=80=99t trade that often, but there are pricing services=
+ and you do your best. There are=C2=A0harder things. If for instance you ru=
+n a mutual fund that owns a bunch of corridor variance swaps, you cannot ju=
+st go look at where corridor variance swaps are trading that day and write =
+down the answer. They don=E2=80=99t really trade. There will be some pricin=
+g model that tells you how much your corridor variance swap ought to be wor=
+th, and you=E2=80=99ll type in the relevant parameters and get back a valua=
+tion, and you=E2=80=99ll write it down, but everything will be a bit model-=
+driven and you can=E2=80=99t ever be sure that the value you write down is =
+your =E2=80=9Creal=E2=80=9D NAV. But you do your best.Or you don=E2=80=99t,=
+ maybe you don=E2=80=99t do your best at all, that=E2=80=99s another way th=
+is could go. The Infinity Q Diversified Alpha Fund is a mutual fund (!?) th=
+at =E2=80=9Cattempts to generate positive absolute returns by providing exp=
+osure to several =E2=80=98alternative=E2=80=99=C2=A0strategies including Vo=
+latility, Equity Long/Short, Managed Futures, and Global Macro=E2=80=9D; th=
+at is, it=E2=80=99s a hedge fund in a mutual-fund wrapper. One thing that i=
+t does is make a lot of complicated volatility bets, including variance swa=
+ps, correlation swaps, dispersion swaps, and other very much over-the-count=
+er trades with bank counterparties. Here is a horrifying=C2=A0Securities an=
+d Exchange Commission filing from the fund, asking the SEC to allow it to s=
+uspend redemptions:The circumstances leading to the request for relief aris=
+e from Infinity Q=E2=80=99s inability, as required under the Fund=E2=80=99s=
+ valuation procedures, to value certain Fund holdings and the Fund=E2=80=99=
+s resulting inability to calculate net asset value (=E2=80=9CNAV=E2=80=9D).=
+ As disclosed in the Fund=E2=80=99s statement of additional information, in=
+ calculating the Fund=E2=80=99s NAV, any Fund holdings for which current an=
+d reliable market quotations are not readily available =E2=80=9Care valued =
+at their respective fair values as determined in good faith by [the] Advise=
+r=E2=80=9D1 under procedures approved and overseen by the Board of Trustees=
+ of the Trust (the =E2=80=9CBoard=E2=80=9D). The Fund=E2=80=99s current por=
+tfolio includes swap instruments (the =E2=80=9CSwaps=E2=80=9D) for which In=
+finity Q calculates fair value using models provided by a third-party prici=
+ng vendor. As of February 18, 2021, the Fund=E2=80=99s reported NAV was der=
+ived using a valuation for these Swaps that resulted in the value of the Sw=
+aps constituting approximately 18% of the Fund=E2=80=99s reported NAV.On Fe=
+bruary 18, 2021, based on information learned by the Commission staff and s=
+hared with Infinity Q, Infinity Q informed the Fund that Infinity Q=E2=80=
+=99s Chief Investment Officer had been adjusting certain parameters within =
+the third-party pricing model that affected the valuation of the Swaps. On =
+February 19, 2021, Infinity Q informed the Fund that at such time it was un=
+able to conclude that these adjustments were reasonable, and, further, that=
+ it was unable to verify that the values it had previously determined for t=
+he Swaps were reflective of fair value. Infinity Q also informed the Fund t=
+hat it would not be able to calculate a fair value for any of the Swaps in =
+sufficient time to calculate an accurate NAV for at least several days. Inf=
+inity Q and the Fund immediately began the effort to value these Swap posit=
+ions accurately to enable the Fund to calculate an NAV, which effort includ=
+es the retention of an independent valuation expert. However, Infinity Q an=
+d the Fund currently believe that establishing and verifying those alternat=
+ive methods may take several days or weeks. Infinity Q and the Fund are als=
+o determining whether the fair values calculated for positions other than t=
+he Swaps are reliable, and the extent of the impact on historical valuation=
+s. As a result, the Fund was unable to calculate an NAV on February 19, 202=
+1, and it is uncertain when the Fund will be able to calculate an NAV that =
+would enable it to satisfy requests for redemptions of Fund shares.The Fund=
+ and Infinity Q believe that the best course of action for current and form=
+er shareholders of the Fund is to liquidate the Fund in a reasonable period=
+ of time, determine the extent and impact of the historical valuation error=
+s, and return the maximum amount of proceeds to such shareholders. Relief p=
+ermitting the Fund to suspend redemptions and postpone the date of payment =
+of redemption proceeds with respect to redemption orders received but not y=
+et paid will permit the Fund to arrive at a valuation for the Swaps and any=
+ other portfolio holdings for which current and reliable market quotations =
+are not available, and to liquidate its holdings in an orderly manner.Oops!=
+ =E2=80=9CAdjusting certain parameters within the third-party pricing model=
+ that affected the valuation of the Swaps=E2=80=9D is the bad thing there; =
+well, that and =E2=80=9Cunable to conclude that these adjustments were reas=
+onable.=E2=80=9D Oh also it will take them =E2=80=9Cseveral days or weeks=
+=E2=80=9D to figure out what their stuff is actually worth. Here is how the=
+ fund has described=C2=A0its valuation methods:The Fund makes investments i=
+n various types of volatility and variance swaps. The Adviser deems vanilla=
+ volatility and index barrier variance swaps as Level 2 positions, and comm=
+on stock barrier and corridor variance swaps as Level 3 positions in the fa=
+ir value hierarchy. The Fund uses a pricing service to model price the vari=
+ance swap trades. The pricing service uses quotes from brokers to estimate =
+implied volatility levels as an input to these models. A significant change=
+ in implied volatility could have a significant impact on the value of a po=
+sition.The Fund makes dispersion investments using volatility and variance =
+swaps and options on dispersion. The Adviser deems these positions to be il=
+liquid and classifies these positions as Level 3 in the fair value hierarch=
+y. The Adviser uses model pricing to calculate the fair volatility level fo=
+r each leg of the dispersion trade. The Adviser uses quotes from a pricing =
+service and brokers to estimate implied volatility levels as an input to th=
+ese models. A significant change in implied volatility could have a signifi=
+cant impact on the value of a position, and depending on the direction of t=
+he change, could either increase or decrease a position's value.The Fund ma=
+kes cross-asset correlation investments using correlation and covariance sw=
+aps. The Adviser deems these positions to be illiquid and classifies these =
+positions as Level 3 in the fair value hierarchy. The Adviser uses a third =
+party calculation agent to value these positions. The local volatility mode=
+l is used to calculate the fair correlation level for correlation swaps. Qu=
+otes from a pricing service are used to estimate the implied correlation le=
+vels as an input to these models. A significant change in implied volatilit=
+y could have a significant impact on the value of a position, and depending=
+ on the direction of the change, could either increase or decrease a positi=
+on's value.Level 1 assets have market prices; level 2 assets have values th=
+at can be computed from other observable inputs; level 3 assets have =E2=80=
+=9Csignificant unobservable inputs, including the Fund's own assumptions in=
+ determining fair value of investments.=E2=80=9D=C2=A0If you own a complex =
+and illiquid enough financial instrument, you can kind of say it=E2=80=99s =
+worth whatever you want=E2=80=94just adjust some parameters=E2=80=94and peo=
+ple will, for a time, believe you. Infinity Q seems to have stopped believi=
+ng its CIO=E2=80=99s valuations. ( His lawyers say:=C2=A0=E2=80=9COur clien=
+t has acted in good faith throughout his tenure at Infinity Q and will cont=
+inue to do so moving forward. His focus has always been on delivering and p=
+reserving value for investors.=E2=80=9D)
+   =20
+         =20
+             =20
+               =20
+                   =20
+                       =20
+                           =20
+                               =20
+                           =20
+                       =20
+                       =20
+                           =20
+                               =20
+                                    Paid Post
+                                    People are (still) worried about financ=
+ial models
+
+When hundreds of companies report this week,=C2=A0Canalyst clients will hav=
+e updated models within hours of the press release. They'll=C2=A0spend more=
+ time on analysis, and less on data entry, thanks to=C2=A0exceptional accur=
+acy and coverage. Get your head start with a=C2=A0free trial today.
+                                    Canalyst
+                               =20
+                           =20
+                       =20
+                   =20
+               =20
+           =20
+       =20
+   =20
+How=E2=80=99s GameStop doing?Come on with this:GameStop Corp.=C2=A0shares s=
+urged Monday, continuing an epic journey for the videogame retailer.The sto=
+ck jumped 13% to $46, reversing a string of losses to post its biggest gain=
+ in more than two weeks. The shares have lost about nine-tenths of their va=
+lue since cresting at $483 in intraday trading late last month.The latest l=
+arge swing in the company=E2=80=99s shares comes after Keith Gill, the man =
+behind the Reddit-driven frenzy in GameStop stock, disclosed a larger stake=
+ in it late Friday. A new screenshot posted on Reddit by DeepF---ingValue, =
+his online username, showed that he bought an additional 50,000 shares, bri=
+nging his total stockholdings to 100,000 shares, worth roughly $4 million a=
+s of Friday, The Wall Street Journal reported.Sometimes a big investor or i=
+nsider will buy stock in a company and will disclose the buying on Schedule=
+ 13D or 13G=C2=A0or 13F=C2=A0or Form 4, official forms filed with the U.S. =
+Securities and Exchange Commission, and investors will get excited and will=
+ buy more stock to copy what the big investor or insider is doing. This is =
+basically the same except (1) Gill owns roughly 0.14% of the company and ha=
+s no inside information and (2) instead of disclosing his holdings on offic=
+ial SEC forms that are required by law, he=E2=80=99s posting screenshots of=
+ his brokerage statement on Reddit.Does Roaring Kitty (Gill=E2=80=99s YouTu=
+be and Twitter username, which I prefer to his real name and his less print=
+able Reddit name) control this stock now? Is he the  Elon Musk of GameStop?=
+ Is buying GameStop stock just a way to associate yourself with Roaring Kit=
+ty=E2=80=99s ineffable coolness, rather than any particular bet on its futu=
+re cash flows? Can he make it go up by saying =E2=80=9CI like the stock,=E2=
+=80=9D and make it go down by, like, going a day without saying that?WeSett=
+leSeems like a  reasonable compromise:WeWork Co-Founder Adam Neumann is in =
+advanced talks to settle his lawsuit against the co-working company=E2=80=
+=99s biggest backer SoftBank Group Corp., according to people familiar with=
+ the matter.Under the terms of the potential settlement, SoftBank would pur=
+chase half of the WeWork shares it originally agreed to buy in 2019, said o=
+ne the people, who asked not to be identified because the talks are still p=
+rivate. That means Neumann would be able to sell close to $500 million in s=
+tock, and that SoftBank would pay about $1.5 billion overall. The shares ar=
+e being sold at the same price agreed upon in 2019, the person said.The dea=
+l would mean Neumann sells about a quarter of his position in WeWork and re=
+mains a major shareholder in the company, the person said, while noting the=
+ agreement isn=E2=80=99t finalized and could still change. The agreement co=
+uld also pave the way for a second attempt at a WeWork public listing, the =
+person added.SoftBank agreed to buy a bunch of WeWork shares from existing =
+investors, including Neumann, after WeWork=E2=80=99s embarrassing failed IP=
+O. Then a pandemic hit, the shares were worth less than SoftBank had agreed=
+ to pay, and it decided to get out of the deal.=C2=A0Neumann (and  WeWork) =
+sued, demanding that SoftBank live up to the deal. Between Neumann=E2=80=99=
+s position (SoftBank should buy all the stock it originally agreed to buy) =
+and SoftBank=E2=80=99s (it should buy none of it), the obvious deal to cut =
+is that SoftBank should buy about half the stock, and that seems to be the =
+deal.When we last talked about this, I  wrote that a trial in this case (wh=
+ich is now scheduled to start March 4) would be embarrassing for both sides=
+, and that =E2=80=9Cboth sides have incentives to settle,=E2=80=9D but I al=
+so noted that Neumann and SoftBank=E2=80=99s Masayoshi Son both seem pretty=
+ much immune to embarrassment and =E2=80=9Care not people who will back dow=
+n from confrontation just because it might make them look bad.=E2=80=9D Sti=
+ll. The difference now is that, with the current SPAC boom, WeWork could tr=
+y again to go public, which is (1)=C2=A0probably worth a lot of money to bo=
+th Neumann and Son but (2) hard to do when everyone is still suing each oth=
+er. Might as well cut a quick deal with each other and sell your stock to a=
+ SPAC while you can.Insider fantasy soccerHahahaha:Aston Villa have banned =
+their squad from playing Fantasy Premier League after inside information re=
+garding Jack Grealish=E2=80=99s injury was leaked last week.The fitness of =
+Villa=E2=80=99s captain before the defeat by Leicester was the subject of r=
+umours on social media on Friday night.=C2=A0The Twitter account FPL Inside=
+r reported that multiple Villa players and staff had transferred Grealish o=
+ut of their dream teams. =E2=80=A6Transfers are confirmed on the Fantasy Pr=
+emier League website 90 minutes before the weekend=E2=80=99s first fixture,=
+ meaning anyone who knows where to look could see Grealish had been transfe=
+rred out of his team-mates=E2=80=99 sides before Wolves faced Leeds on Frid=
+ay =E2=80=94 two days before Villa hosted Leicester.Many players have Fanta=
+sy Premier League teams and it is not possible for users to make their acco=
+unts private, meaning anyone who knows where to look can see their activity=
+.Generally the way fantasy sports works is that you get points for stuff th=
+at people on your fantasy team do each week; if someone on your team doesn=
+=E2=80=99t do anything=E2=80=94because he=E2=80=99s injured or otherwise no=
+t in the lineup in real life=E2=80=94he doesn=E2=80=99t get you any points.=
+ If you know he=E2=80=99s injured, you should take him off your team. If yo=
+u sit next to him in the locker room, you might have inside information abo=
+ut his injuries. If your own fantasy-sports trades are=C2=A0public, under y=
+our=C2=A0actual name, then that inside information might leak.The obvious s=
+olution, which Aston Villa has come to here, is=C2=A0not to let athletes ga=
+mble on their own sport, even the not-quite-gambling of fantasy sports, but=
+ there are gentler solutions. =E2=80=9CThis open source of information is a=
+ concern for several clubs and Sportsmail understands most will tell their =
+players to stop selecting team-mates to prevent situations such as this.=E2=
+=80=9D Isn=E2=80=99t that a good idea anyway? Isn=E2=80=99t it awkward to h=
+ave some of your real-life teammates on your fantasy team, and others not? =
+Don=E2=80=99t you want to bet on all of your teammates? If you=E2=80=99ve g=
+ot the ball and one teammate is in a really good scoring position, but he=
+=E2=80=99s not on your fantasy team, and another teammate is in a less prom=
+ising position but he=C2=A0is=C2=A0on your fantasy team, who do you pass to=
+?So Long BlockchainIt  was a good run, I guess:Long Blockchain Corp., the f=
+ormer iced-tea company that became a poster child of crypto-investment exce=
+sses, had its shares delisted by U.S. regulators after failing to file fina=
+ncial reports for years.Long Blockchain, which changed its name from Long I=
+sland Ice Tea Corp. in 2017, had been trading over-the-counter since Nasdaq=
+ kicked it off its exchange in 2018, the Securities and Exchange Commission=
+ said in an order. The SEC officially pulled the Farmingdale, New York-base=
+d company=E2=80=99s registration Monday, citing the fact that the last time=
+ it filed a financial report was for the quarter ended Sept. 30, 2018. ...I=
+n its order, the SEC said Long Blockchain=E2=80=99s shift from making soft =
+drinks to blockchain technology never materialized.Here is the SEC order. H=
+ere is what I  wrote about Long Blockchain in 2017, when it called the abso=
+lute top of the pretending-to-pivot-to-blockchain trend. I am not sure that=
+ there has ever been a financial-news story as purely and perfectly stupid =
+as this one, or that there ever will be again. I=E2=80=99ll pour out a non-=
+alcoholic Long Island Iced Tea for Long Blockchain.=C2=A0Here is Michael Bo=
+lton singing a song about payment for order flowReally!Things happenTexans =
+Will  Pay for Decades as Crisis Tacks Billions Onto Bills. Bitcoin  Tumbles=
+ Below $50,000 as Caution Sweeps Over Crypto. Debt Markets Brace for  Highe=
+r Yields to Stay as Stimulus Sets In.=C2=A0 A Star Trader Turns Star Witnes=
+s in  $12 Billion Tax Scandal.=C2=A0Why an Animated Flying Cat With a Pop-T=
+art Body Sold for Almost $600,000.=C2=A0If you'd like to get=C2=A0Money=C2=
+=A0Stuff=C2=A0in handy email form, right in your inbox, please=C2=A0subscri=
+be at this link. Or you can subscribe to Money Stuff and other great Bloomb=
+erg newsletters here. Thanks![1] This is all very approximate and ignores  =
+warrants,  sponsor promotes, etc. All of those things make this negotiation=
+ *harder*=E2=80=94they essentially mean that the SPAC is demanding *free* s=
+hares for itself, shares beyond the ones it=E2=80=99s buying at=C2=A0$10 pe=
+r share=E2=80=94but the problem in the text is hard enough without those co=
+mplications.=C2=A0[2] That is complicated by the fact that SPACs have  rede=
+mption=C2=A0rights: If you don=E2=80=99t like the deal, you can take your $=
+10=C2=A0back, which means SPACs need to be quite careful to strike deals th=
+at will command enough support. Still you can have a deal that trades above=
+ $10 initially and disappoints investors after the deal closes and redempti=
+on is no longer available. And in fact, historically, =E2=80=9Cfor a large =
+majority of SPACs, post-merger share prices fall.=E2=80=9D The current dyna=
+mic of high-profile SPACs having huge pops is not at all universal.[3] Inci=
+dentally, one of the PIPE investors is the Saudi PIF, which is also a big e=
+xisting investor. So the Saudis are effectively selling stock (rather, gett=
+ing diluted) at $10 per share (to the SPAC), and also buying stock at $15 p=
+er share (in the PIPE). It is just not very tidy.
+   =20
+ =20
+
+
+   =20
+     =20
+        Follow Us
+       =20
+         =20
+       =20
+       =20
+         =20
+       =20
+       =20
+         =20
+       =20
+     =20
+     =20
+       =20
+          Get the newsletter
+       =20
+     =20
+   =20
+
+
+   =20
+       =20
+       =20
+            =C2=A0
+       =20
+       =20
+           =20
+       =20
+       =20
+            Like Money Stuff?=C2=A0|=C2=A0
+Get=C2=A0unlimited access to Bloomberg.com, where you'll find trusted, data=
+-based journalism in 120 countries around the world and expert analysis fro=
+m exclusive daily newsletters.
+
+Before it=E2=80=99s here, it=E2=80=99s on the=C2=A0Bloomberg=C2=A0Terminal.=
+=C2=A0Find out more about how the Terminal delivers information and analysi=
+s that financial professionals can=E2=80=99t find anywhere else.=C2=A0Learn=
+ more.
+       =20
+       =20
+            =C2=A0
+       =20
+       =20
+   =20
+
+
+ =20
+     You received this message because you are subscribed to Bloomberg's Mo=
+ney Stuff newsletter.
+ =20
+ =20
+    Unsubscribe | Bloomberg.com | Contact Us
+ =20
+ =20
+    Bloomberg L.P. 731 Lexington, New York, NY, 10022
+ =20
+
+
+   =20
+   =20
+ =20
+
+
+<a href=3D""><img src=3D"https://link.mail.bloombergbusiness.com/img/5d2dff=
+ebecf12a0dad4db039dphim.25w0/2b0a3352.gif" alt=3D"" border=3D"0" /></a>
+
+
+
+------=_Part_2154061_1119158830.1614101189602
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns=3D"http://www.w3.org/199=
+9/xhtml" style=3D"width: 100%;">
+<head>
+<style>@media (prefers-color-scheme: dark) {
+}
+[data-ogsc] body {}]]></style><meta http-equiv=3D"Content-Type" content=3D"=
+text/html; charset=3Dutf-8" />
+<meta name=3D"viewport" content=3D"initial-scale=3D1" />
+<!--[if (mso)|(mso 16)]>
+<style type=3D"text/css">a {text-decoration: none;}</style>
+<![endif]-->
+<title>Money Stuff</title>
+<style>.body-copy a:visited {
+color: black; text-decoration: none !important; border-bottom: 1px solid bl=
+ack; background-color: #ccc;
+}
+.sponsored-ad--text--body a:visited {
+color: black; text-decoration: none !important; border-bottom: 1px solid bl=
+ack; background-color: #ccc;
+}
+h1 a:visited {
+text-decoration: none; color: #000000;
+}
+img {
+max-width: 550px;
+}
+]]]]>>]]></style></head>
+<body style=3D"width: 100%; -webkit-font-smoothing: antialiased; font-famil=
+y: Helvetica, Arial, sans-serif; font-size: 16px; line-height: 150%; color:=
+ #000; margin: 0; padding: 0;">
+<table id=3D"wrapper" align=3D"center" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 550px; padding-top: 10px; width: 100% !imp=
+ortant;" width=3D"100%">
+<!--[if mso]>
+<center>
+<tr><td>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"550">
+<![endif]-->
+<tr>
+<td style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt;">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt;">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" clas=
+s=3D"brand-hdr">
+<tr>
+<td align=3D"center" style=3D"border-collapse: collapse; mso-table-lspace: =
+0pt; mso-table-rspace: 0pt;"><a href=3D"https://link.mail.bloombergbusiness=
+.com/click/23024110.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9vcGluaW9uL2F1=
+dGhvcnMvQVJiVFFsUkxSakUvbWF0dGhldy1zLWxldmluZQ/5d2dffebecf12a0dad4db039Bfe1=
+75fd7"><!--[if mso]>
+<table width=3D"550"><tr><td><img alt=3D"Bloomberg" src=3D"https://assets.b=
+wbx.io/images/users/iqjWHBFdfxIU/ije72WSHsgD4/v0/-1x-1.png" width=3D"550" /=
+></td></tr></table>
+<div style=3D"display:none">
+<![endif]--><img class=3D"logo-image" src=3D"https://assets.bwbx.io/images/=
+users/iqjWHBFdfxIU/ije72WSHsgD4/v0/-1x-1.png" border=3D"0" alt=3D"Bloomberg=
+" style=3D"width: 100%; max-width: 550px;" /><!--[if mso]>
+</div>
+<![endif]--></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt;">
+<table class=3D"sponsored-ad" width=3D"100%" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"8">
+<tr>
+<td width=3D"206" align=3D"center" style=3D"border-collapse: collapse; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt;">
+<a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.100944/aH=
+R0cDovL3d3dy5ibG9vbWJlcmcuY29tL2Jjb20vc3RhdGljL2VtYWlsX2FkP2l1PS81MjYyL25ld=
+3NsZXR0ZXIvbW9uZXlzdHVmZiZzej0yMDZ4MzEmdD0/5d2dffebecf12a0dad4db039Bda145c3=
+9">
+<img src=3D"https://pubads.g.doubleclick.net/gampad/ad?iu=3D/5262/newslette=
+r/moneystuff&amp;sz=3D206x31&amp;t=3D" />
+</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class=3D"body-component" width=3D"100%" border=3D"0" cellspacing=3D"=
+0" cellpadding=3D"0">
+<tr>
+<td class=3D"body-copy bbiz-wysiwyg-content" style=3D"font-family: Helvetic=
+a, Arial, sans-serif; font-size: 16px; line-height: 150%; border-collapse: =
+collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0 10px;">
+<h2 style=3D"color: #000000; font-weight: bold; font-family: Arial Black, A=
+rial, Helvetica, sans-serif; letter-spacing: -1px; font-size: 20px !importa=
+nt; border-bottom-width: 1px; border-bottom-color: #000000; border-bottom-s=
+tyle: dotted; padding-bottom: 5px; margin-top: 30px; margin-bottom: 0;">SPA=
+C SPAC SPAC</h2><p style=3D"font-family: Helvetica, Arial, sans-serif; marg=
+in: 1em 0;">A special purpose acquisition company is a blank-check company =
+that raises money from investors in an initial public offering, puts the mo=
+ney in a pot, and uses the pot to buy a stake in some existing private comp=
+any, merging with that company (in a =E2=80=9Cde-SPAC merger=E2=80=9D) and =
+taking it public.=C2=A0</p><p style=3D"font-family: Helvetica, Arial, sans-=
+serif; margin: 1em 0;">Traditionally the SPAC does its IPO at $10 per share=
+; if it sells 100 million shares then it will have=C2=A0$1 billion in its p=
+ot. It will go out and find a private company and negotiate with it, and th=
+e negotiations will be over how big a stake the SPAC gets for its money. Th=
+e SPAC has a billion dollars; it will go to the private company and say, fo=
+r instance, =E2=80=9Cwe think you are a $4 billion company, if we give you =
+$1 billion you=E2=80=99ll be a $5 billion company, so our $1 billion should=
+ buy 20% of your stock, so after we merge you should have 500 million share=
+s outstanding of which our SPAC shareholders should own=C2=A0100 million.=
+=E2=80=9D[1] And the company says =E2=80=9Cno we are a $9 billion company, =
+if you give us $1 billion we=E2=80=99ll be a $10 billion company, so your $=
+1 billion should buy 10% of our stock, so after we merge we=E2=80=99ll have=
+ 1 billion shares outstanding of which your SPAC shareholders should own 10=
+0 million.=E2=80=9D And then they go from there and hopefully find a compro=
+mise price everyone can live with.=C2=A0</p><p style=3D"font-family: Helvet=
+ica, Arial, sans-serif; margin: 1em 0;">And there will usually be a PIPE, a=
+ private investment in public equity, alongside the de-SPAC merger deal: So=
+me big institutional investors will put in new money to buy shares directly=
+, so that the newly public company raises money not only from the SPAC but =
+also from other big institutions. So perhaps the final deal will be a $6 bi=
+llion pre-money valuation plus $1 billion from the SPAC and $1 billion from=
+ PIPE investors, for a total valuation of $8 billion; SPAC investors will g=
+et about 12.5% of the company (one-eighth, the amount of cash they put in d=
+ivided by the total valuation), the PIPE investors will get another 12.5%, =
+and the existing private shareholders will keep the other 75%.</p><p style=
+=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">Then they wi=
+ll announce the deal and hopefully the stock=E2=80=94the SPAC stock, which =
+is already public=E2=80=94will trade up. The deal will be well received; in=
+vestors will think the company is worth more than the agreed valuation. Per=
+haps the market will say the company is worth $10 billion, which means that=
+ the SPAC shareholders=E2=80=99 12.5% stake is worth $1.25 billion, which m=
+eans that each $10 SPAC share should trade to $12.50.=C2=A0</p><p style=3D"=
+font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">This is the same=
+ basic mechanism as a traditional initial public offering. The people who a=
+gree to buy a private company=E2=80=99s shares at the moment it becomes pub=
+lic <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.10094=
+4/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9vcGluaW9uL2FydGljbGVzLzIwMjAtMDctMTQvZ=
+XZlcnlvbmUtd2FudHMtYS1ibGFuay1jaGVjaw/5d2dffebecf12a0dad4db039B221a1797" it=
+emprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: black; text-de=
+coration: none !important; border-bottom-width: 1px; border-bottom-color: b=
+lack; border-bottom-style: solid; background-color: #ccc;"> are taking a ri=
+sk</a> and doing the private company a favor; they expect to be able to buy=
+ those shares at a bit of a discount. After the company goes public=E2=80=
+=94in an IPO or a de-SPAC merger=E2=80=94the stock should trade up, to rewa=
+rd the initial purchasers. In an IPO this is called the =E2=80=9C<a href=3D=
+"https://link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93=
+d3cuYmxvb21iZXJnLmNvbS9vcGluaW9uL2FydGljbGVzLzIwMTktMTAtMDQvaG93LXRvLWRpc3J=
+1cHQtdGhlLWlwby1wb3A/5d2dffebecf12a0dad4db039B52510f29" itemprop=3D"StoryLi=
+nk" itemscope=3D"itemscope" style=3D"color: black; text-decoration: none !i=
+mportant; border-bottom-width: 1px; border-bottom-color: black; border-bott=
+om-style: solid; background-color: #ccc;">IPO pop</a>,=E2=80=9D and it is m=
+uch <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.10094=
+4/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9vcGluaW9uL2FydGljbGVzLzIwMjAtMDgtMDYva=
+XQtcy1hLWdvb2QtYW5kLWJhZC10aW1lLWZvci1pcG9z/5d2dffebecf12a0dad4db039B9ebeac=
+d8" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: black; t=
+ext-decoration: none !important; border-bottom-width: 1px; border-bottom-co=
+lor: black; border-bottom-style: solid; background-color: #ccc;"> criticize=
+d by venture capitalists</a>. In a SPAC this phenomenon doesn=E2=80=99t exa=
+ctly have a name, but it obviously exists and is the basis for the current =
+SPAC mania. If investors didn=E2=80=99t think =E2=80=9Cbuying SPAC stock at=
+ $10 gives us a ticket to get some cool private company at a discount,=E2=
+=80=9D they wouldn=E2=80=99t be excitedly buying SPAC stocks; there would n=
+ot be a dozen SPACs <a href=3D"https://link.mail.bloombergbusiness.com/clic=
+k/23024110.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9vcGluaW9uL2FydGljbGVzL=
+zIwMjEtMDItMjIvZWxlY3RyaWMtYmlsbHMtYXJlLWEtZ2FtYmxlLXRvbw/5d2dffebecf12a0da=
+d4db039B951e63f3" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"c=
+olor: black; text-decoration: none !important; border-bottom-width: 1px; bo=
+rder-bottom-color: black; border-bottom-style: solid; background-color: #cc=
+c;"> going public each day</a>, and multiple <a href=3D"https://link.mail.b=
+loombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cuY25iYy5jb20vMjAy=
+MS8wMS8yNS90aGlyZC1zcGFjLWV0Zi1oaXRzLW1hcmtldC1hbmQtaXRzLWNlby1jbGFpbXMtZWR=
+nZS1vdmVyLXJpdmFscy5odG1s/5d2dffebecf12a0dad4db039B16e04ab6" itemprop=3D"St=
+oryLink" itemscope=3D"itemscope" style=3D"color: black; text-decoration: no=
+ne !important; border-bottom-width: 1px; border-bottom-color: black; border=
+-bottom-style: solid; background-color: #ccc;">exchange-traded funds</a> co=
+mpeting to package SPACs for investors, and generally a ton of excitement f=
+or SPACs. (Of course there is no guarantee of anything; some IPOs open belo=
+w their IPO price, and some SPACs trade down as investors are disappointed =
+by the deals they make.[2] But the usual expectation, at least for hot comp=
+anies=C2=A0in the current hot market, is for these things to trade up initi=
+ally.)</p><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1e=
+m 0;">The thing about SPACs, though,=C2=A0is that shares in the SPAC=E2=80=
+=94the pot of money=E2=80=94trade on the stock exchange=C2=A0<em>before=C2=
+=A0</em>the merger is announced. If you are aware of the basic SPAC-pop dyn=
+amic=E2=80=94if you have watched other high-profile SPAC deals get done and=
+ their stocks trade up=E2=80=94you might look at a pre-merger SPAC of a wel=
+l-known sponsor and say =E2=80=9Cwell, this SPAC is just a pot of money, an=
+d I don=E2=80=99t know what company it is going to merge with, but it=E2=80=
+=99s going to merge with=C2=A0<em>some=C2=A0</em>company, and it will get a=
+ good price, so after the merger these shares will be worth $12.50 or somet=
+hing.=E2=80=9D And so you might be willing to pay, say, $10.50 or $11 or $1=
+2 or $12.49 for the SPAC=E2=80=99s shares today, even though today they jus=
+t represent a claim on $10 worth of cash. You can pre-purchase the =E2=80=
+=9CSPAC pop,=E2=80=9D as it were.=C2=A0</p><p style=3D"font-family: Helveti=
+ca, Arial, sans-serif; margin: 1em 0;">You could take this logic further. Y=
+ou could say: =E2=80=9CWell, this SPAC is just a pot of money, and I don=E2=
+=80=99t know what company it is going to merge with, but I suspect it=E2=80=
+=99s going to be a hot electric-vehicle company, and hot electric-vehicle c=
+ompanies have particularly obscene SPAC pops because the market absolutely =
+loves SPACs and EVs right now, so I think that the sponsor will pay $10 for=
+ shares that=C2=A0will trade up to $50, so I am going to pay $49.99 for the=
+m now.=E2=80=9D You=E2=80=99ll pay $49.99 for a pot of cash worth $10. And,=
+ to be clear, this can be a perfectly rational trade: You=E2=80=99re not=C2=
+=A0<em>just=C2=A0</em>buying a $10 pot of cash for $49.99; you=E2=80=99re a=
+lso buying the high likelihood that that pot of cash will be used to buy un=
+derpriced shares of a hot private electric-vehicle company. The right SPAC =
+can do that, but you can=E2=80=99t do that with $10 in your checking accoun=
+t, so the $10 in the SPAC=E2=80=99s hands really is worth more than $10.</p=
+><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">But=
+ what is the=C2=A0electric-vehicle company to make of all this? A SPAC spon=
+sor comes to the EV company and says =E2=80=9Cwe=E2=80=99ll give you $10 pe=
+r share for your stock, let=E2=80=99s negotiate about how much stock that w=
+ill buy us.=E2=80=9D And then they=C2=A0debate valuations; the company argu=
+es it is=C2=A0worth a lot, while the sponsor says it=E2=80=99s=C2=A0worth l=
+ess. But at some point the company=C2=A0says to the sponsor: =E2=80=9CLook,=
+ you=E2=80=99re asking to buy our stock at $10 per share, to give it to you=
+r shareholders, who paid you $10 per share for it. But I can look on the st=
+ock exchange and see that your stock is trading at $50 per share right now.=
+ I know that, to avoid disappointing your shareholders, you have to get bac=
+k stock worth $50 for the $10 you put in, and I don=E2=80=99t want to sell =
+you stock at an 80% discount.=E2=80=9D It is a fair objection. If the EV co=
+mpany sells shares worth, say, $25 to the SPAC, and gets back $10 per share=
+, then (1) the EV company is getting kind of ripped off (it=E2=80=99s selli=
+ng $25 stock for $10), but (2) the SPAC shareholders are also getting kind =
+of ripped off (they bought $25 stock for $50). The SPAC shareholders have o=
+nly themselves to blame, really=E2=80=94they=E2=80=99re the ones who paid $=
+50 for a $10 stake in a pot of cash=E2=80=94but it is not a great dynamic.<=
+/p><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;"><=
+a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.100944/aHR=
+0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjEtMDItMjIvbHVjaWQtbW=
+90b3JzLWFncmVlcy10by1nby1wdWJsaWMtd2l0aC0yNC1iaWxsaW9uLXZhbHVhdGlvbg/5d2dff=
+ebecf12a0dad4db039B98ab8491" itemprop=3D"StoryLink" itemscope=3D"itemscope"=
+ style=3D"color: black; text-decoration: none !important; border-bottom-wid=
+th: 1px; border-bottom-color: black; border-bottom-style: solid; background=
+-color: #ccc;"> Anyway</a>:</p><blockquote><p style=3D"font-family: Helveti=
+ca, Arial, sans-serif; margin: 1em 0;">Shares of the blank-check firm combi=
+ning with electric-vehicle startup Lucid Motors Inc. plunged in U.S. tradin=
+g after confirming the biggest SPAC merger yet to cash in on investor enthu=
+siasm for battery-powered cars.</p><p style=3D"font-family: Helvetica, Aria=
+l, sans-serif; margin: 1em 0;">Churchill Capital Corp IV, the special-purpo=
+se acquisition company run by financier Michael Klein, fell as much as 46% =
+on Tuesday after confirming its merger with Lucid. The deal will generate a=
+bout $4.4 billion in cash for the 14-year-old carmaker, which announced pro=
+duction of its debut model will be delayed to the second half of this year.=
+</p><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">=
+The slump follows a dramatic 472% run-up in the shares since Bloomberg firs=
+t reported on Jan. 11 that Lucid and Churchill were in talks. Lucid has shi=
+ed away from comparisons to market leader Tesla Inc., but the public listin=
+g at a pro-forma equity value of $24 billion positions it to compete for a =
+slice of what=E2=80=99s expected to become a rapidly growing market for EVs=
+. It plans to use the newly acquired funds to bring vehicles to market and =
+expand its factory in Casa Grande, Arizona.</p><p style=3D"font-family: Hel=
+vetica, Arial, sans-serif; margin: 1em 0;">Lucid Motors Inc. is merging wit=
+h a blank-check company run by financier Michael Klein that values the comb=
+ined entity at a pro-forma equity value of $24 billion, the biggest in a se=
+ries of deals involving electric-vehicle startups cashing in on investor ap=
+petite for battery-powered cars. =E2=80=A6</p><p style=3D"font-family: Helv=
+etica, Arial, sans-serif; margin: 1em 0;">The reverse-merger represents the=
+ largest injection of capital into Lucid since Saudi Arabia=E2=80=99s Publi=
+c Investment Fund invested more than $1 billion in 2018. The agreement incl=
+uded a $2.5 billion private placement in public equity, or PIPE, the larges=
+t of its kind on record for a deal with a special-purpose acquisition compa=
+ny. It was led by existing investor PIF as well as BlackRock, Fidelity Mana=
+gement, Franklin Templeton, Neuberger Berman, Wellington Management and Win=
+slow Capital, according to a joint statement from Lucid and Churchill Capit=
+al Corp IV, the acquisition company.</p><p style=3D"font-family: Helvetica,=
+ Arial, sans-serif; margin: 1em 0;">The placement sold at $15 a share -- a =
+50% premium to Churchill=E2=80=99s net asset value -- which translates into=
+ about $24 billion in pro-forma equity value, the companies said. The combi=
+ned company has a transaction equity value of $11.8 billion.</p></blockquot=
+e><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">Wh=
+at a bizarre deal. Lucid is selling shares to the Churchill SPAC at $10 per=
+ share. It=E2=80=99s selling shares to the PIPE investors at $15 per share.=
+ Those shares are worth, say, $35, roughly where the SPAC=C2=A0was trading =
+at 10 a.m. today, after the deal announcement.=C2=A0Lucid is selling shares=
+ at a huge discount to the PIPE investors, and at an even huger discount to=
+ the SPAC investors.[3] If a hot tech company did an IPO at $10 per share a=
+nd its stock immediately traded up to $35, venture capitalists would get on=
+ Twitter to say that Wall Street is ripping off startups, that the IPO syst=
+em is irreparably broken, that this=C2=A0<em>two hundred fifty percent unde=
+rpricing=C2=A0</em>is evidence of an evil=C2=A0conspiracy. Here though it=
+=E2=80=99s just how SPACs work, and everyone loves SPACs.</p><p style=3D"fo=
+nt-family: Helvetica, Arial, sans-serif; margin: 1em 0;">Meanwhile, though,=
+ the SPAC investors were expecting to get back shares worth $57.37 (the clo=
+sing price yesterday), so getting back shares worth $35 is a huge disappoin=
+tment.</p><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1e=
+m 0;">Here are the <a href=3D"https://link.mail.bloombergbusiness.com/click=
+/23024110.100944/aHR0cHM6Ly93d3cucHJuZXdzd2lyZS5jb20vbmV3cy1yZWxlYXNlcy9sdW=
+NpZC1tb3RvcnMtdG8tZ28tcHVibGljLWluLW1lcmdlci13aXRoLWNodXJjaGlsbC1jYXBpdGFsL=
+WNvcnAtaXYtYm9sc3RlcmluZy1sdWNpZHMtdmlzaW9uLXRvLXJlZGVmaW5lLWx1eHVyeS1wZXJm=
+b3JtYW5jZS1hbmQtZWZmaWNpZW5jeS1pbi10aGUtc3VzdGFpbmFibGUtZWxlY3RyaWMtdmVoaWN=
+sZS1tYXJrZXQtMzAxMjMyODQ2Lmh0bWw/5d2dffebecf12a0dad4db039Bc075067a" itempro=
+p=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: black; text-decorat=
+ion: none !important; border-bottom-width: 1px; border-bottom-color: black;=
+ border-bottom-style: solid; background-color: #ccc;">press release</a>, Lu=
+cid=E2=80=99s and Churchill=E2=80=99s <a href=3D"https://link.mail.bloomber=
+gbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cubHVjaWRtb3RvcnMuY29tL2Z=
+pbGVzL2x1Y2lkLWludmVzdG9yLWRlY2stZmVicnVhcnktMjAyMS5wZGY/5d2dffebecf12a0dad=
+4db039Bc9d6ac5e" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"co=
+lor: black; text-decoration: none !important; border-bottom-width: 1px; bor=
+der-bottom-color: black; border-bottom-style: solid; background-color: #ccc=
+;">investor deck</a> for the deal, and=C2=A0<a href=3D"https://link.mail.bl=
+oombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cuc2VjLmdvdi9BcmNoa=
+XZlcy9lZGdhci9kYXRhLzE4MTEyMTAvMDAwMTEwNDY1OTIxMDI2MzU3LzAwMDExMDQ2NTktMjEt=
+MDI2MzU3LWluZGV4Lmh0bQ/5d2dffebecf12a0dad4db039B9df01d14" itemprop=3D"Story=
+Link" itemscope=3D"itemscope" style=3D"color: black; text-decoration: none =
+!important; border-bottom-width: 1px; border-bottom-color: black; border-bo=
+ttom-style: solid; background-color: #ccc;">the 8-K</a>. The transaction st=
+ructure is on page 62 of the deck; page 63 explains that the deal represent=
+s an =E2=80=9CAttractive Entry Valuation =E2=80=94=C2=A0Significant Discoun=
+t to Other Entrants.=E2=80=9D What that means is that the deal values Lucid=
+ at 5.3 times estimated 2022 revenues (2.1 times estimated 2023 revenues),=
+=C2=A0<em>at $10 per share</em>, which is lower than Tesla (12.9x), Fisker,=
+ Nio and other hot electric-vehicle companies.=C2=A0(The revenue projection=
+s are on page 67, and they plan on a lot of growth, from $97 million in 202=
+1 to $2.2 billion in 2022; the deal values Lucid at 121.1x estimated 2021 r=
+evenue.) If you are buying Lucid at $10 per share=E2=80=94as, I guess, the =
+SPAC sponsors are=E2=80=94then that=E2=80=99s the right valuation. If you=
+=E2=80=99re buying at $15 per share=E2=80=94as the PIPE investors are=E2=80=
+=94then you=E2=80=99re paying more like 7.9x (3.2x) estimated 2022 (2023) r=
+evenue. If you=E2=80=99re buying at $35 per share=E2=80=94as buyers of SPAC=
+ shares were this morning=E2=80=94then it=E2=80=99s 18.5x (7.4x). If you bo=
+ught=C2=A0at $57.37 per share=E2=80=94as buyers of the SPAC did yesterday, =
+before the deal was announced=E2=80=94then you paid about 30.4x estimated 2=
+022 revenue, a much higher multiple than any of the competitors.=C2=A0</p><=
+p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">Lucid=
+ is <em>selling </em>shares to the SPAC at a reasonable valuation (if you b=
+elieve the projections). But the SPAC shareholders are=C2=A0<em>buying=C2=
+=A0</em>shares at a much higher valuation. There is just a huge gap here, a=
+ gap between what the SPAC shareholders pay and what the company receives. =
+The extra money goes to people who bought SPAC shares earlier=E2=80=94at $1=
+0=E2=80=94and then sold them as the price soared before the deal was announ=
+ced. A ton of value has been extracted from the system, money that was effe=
+ctively paid by Lucid=E2=80=99s new shareholders but won=E2=80=99t go to Lu=
+cid.</p><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em =
+0;">Perhaps this is more efficient than a traditional IPO? Seems weird, but=
+ it=C2=A0accomplishes one crucial thing for Lucid, which is that it allows =
+Lucid to go public based on projected 2023 revenue.=C2=A0Normal IPOs are fo=
+cused on audited financial statements covering years that have already happ=
+ened; future projections are strongly discouraged. Meanwhile SPACs are allo=
+wed to include projections, and in fact Lucid=E2=80=99s deck doesn=E2=80=99=
+t include=C2=A0<em>any=C2=A0</em>historical financials; the =E2=80=9CSummar=
+y P&amp;L=E2=80=9D slide (page 67) starts with estimated 2021 numbers. It=
+=E2=80=99s hard to do a regular IPO for a car company that has never sold a=
+ car, but you can do a SPAC. But it will cost you.</p><h2 style=3D"color: #=
+000000; font-weight: bold; font-family: Arial Black, Arial, Helvetica, sans=
+-serif; letter-spacing: -1px; font-size: 20px !important; border-bottom-wid=
+th: 1px; border-bottom-color: #000000; border-bottom-style: dotted; padding=
+-bottom: 5px; margin-top: 30px; margin-bottom: 0;">Infinity oops</h2><p sty=
+le=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">If you run=
+ a mutual fund, and you own a bunch of stocks, you calculate your fund=E2=
+=80=99s net asset value each day. It=E2=80=99s a pretty easy calculation: Y=
+ou take the price of each stock, multiply by the number of shares you own, =
+and add up the results; that gives the NAV of your fund. Then you divide th=
+at by the number of shares your fund has outstanding, which gives you the N=
+AV per share.</p><p style=3D"font-family: Helvetica, Arial, sans-serif; mar=
+gin: 1em 0;">If someone wants to redeem out of your mutual fund, they come =
+to you and hand you their shares, and you hand them back cash equal to the =
+NAV. It is very important that you get the NAV right: If your calculation o=
+f NAV is too high (too low), you will pay redeeming holders too much (too l=
+ittle) for their shares, meaning that there will be too little (too much) l=
+eft in your fund for the remaining holders, meaning that you=E2=80=99ll be =
+cheating the remaining (redeeming) holders out of their fair share of the v=
+alue. Also of course the=C2=A0<em>performance=C2=A0</em>of your fund is jus=
+t the track record of changes in NAV; if you calculate a NAV that is too hi=
+gh then your fund will look like it performed better than it did, and you w=
+ill attract investment under false pretenses.</p><p style=3D"font-family: H=
+elvetica, Arial, sans-serif; margin: 1em 0;">Again, though, it=E2=80=99s pr=
+etty easy to calculate the NAV of a stock fund. It=E2=80=99s harder if you =
+own bonds, some of which don=E2=80=99t trade that often, but there are pric=
+ing services and you do your best. There are=C2=A0harder things. If for ins=
+tance you run a mutual fund that owns a bunch of <a href=3D"https://link.ma=
+il.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cubWF0aC51Y2hp=
+Y2Fnby5lZHUvfnJsL0VRRl9jb3JyaWRvcnZhcmlhbmNlc3dhcC5wZGY/5d2dffebecf12a0dad4=
+db039Bc99db559" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"col=
+or: black; text-decoration: none !important; border-bottom-width: 1px; bord=
+er-bottom-color: black; border-bottom-style: solid; background-color: #ccc;=
+">corridor</a> <a href=3D"https://link.mail.bloombergbusiness.com/click/230=
+24110.100944/aHR0cHM6Ly93d3cud2lsbW90dC5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMT=
+YvMDcvMTExMTE2X2Jvc3N1LnBkZg/5d2dffebecf12a0dad4db039Bc7873ff8" itemprop=3D=
+"StoryLink" itemscope=3D"itemscope" style=3D"color: black; text-decoration:=
+ none !important; border-bottom-width: 1px; border-bottom-color: black; bor=
+der-bottom-style: solid; background-color: #ccc;">variance swaps</a>, you c=
+annot just go look at where corridor variance swaps are trading that day an=
+d write down the answer. They don=E2=80=99t really trade. There will be som=
+e pricing model that tells you how much your corridor variance swap ought t=
+o be worth, and you=E2=80=99ll type in the relevant parameters and get back=
+ a valuation, and you=E2=80=99ll write it down, but everything will be a bi=
+t model-driven and you can=E2=80=99t ever be sure that the value you write =
+down is your =E2=80=9Creal=E2=80=9D NAV. But you do your best.</p><p style=
+=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">Or you don=
+=E2=80=99t, maybe you don=E2=80=99t do your best at all, that=E2=80=99s ano=
+ther way this could go. The Infinity Q Diversified Alpha Fund is a mutual f=
+und (!?) <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.=
+100944/aHR0cHM6Ly93d3cuc2VjLmdvdi9BcmNoaXZlcy9lZGdhci9kYXRhLzEyNjE3ODgvMDAw=
+MTEwNDY1OTIwMTIyNjAwL3RtMjAzMzQxOGQyX25jc3IuaHRt/5d2dffebecf12a0dad4db039B1=
+6cfb6ca" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: bla=
+ck; text-decoration: none !important; border-bottom-width: 1px; border-bott=
+om-color: black; border-bottom-style: solid; background-color: #ccc;">that<=
+/a> =E2=80=9Cattempts to generate positive absolute returns by providing ex=
+posure to several =E2=80=98alternative=E2=80=99=C2=A0strategies including V=
+olatility, Equity Long/Short, Managed Futures, and Global Macro=E2=80=9D; t=
+hat is, it=E2=80=99s a hedge fund in a mutual-fund wrapper. One thing that =
+it does is make a lot of complicated volatility bets, including variance sw=
+aps, correlation swaps, dispersion swaps, and other very much over-the-coun=
+ter trades with bank counterparties. Here is a horrifying=C2=A0<a href=3D"h=
+ttps://link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3=
+cuc2VjLmdvdi9BcmNoaXZlcy9lZGdhci9kYXRhLzEyNjE3ODgvMDAwMDg5NDE4OTIxMDAwOTc0L=
+2luZmluaXR5cTQwLWFwcGZlYjIyMjAyMS5odG0/5d2dffebecf12a0dad4db039Bfbe803e3" i=
+temprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: black; text-d=
+ecoration: none !important; border-bottom-width: 1px; border-bottom-color: =
+black; border-bottom-style: solid; background-color: #ccc;">Securities and =
+Exchange Commission filing</a> from the fund, asking the SEC to allow it to=
+ suspend redemptions:</p><blockquote><p style=3D"font-family: Helvetica, Ar=
+ial, sans-serif; margin: 1em 0;">The circumstances leading to the request f=
+or relief arise from Infinity Q=E2=80=99s inability, as required under the =
+Fund=E2=80=99s valuation procedures, to value certain Fund holdings and the=
+ Fund=E2=80=99s resulting inability to calculate net asset value (=E2=80=9C=
+NAV=E2=80=9D). As disclosed in the Fund=E2=80=99s statement of additional i=
+nformation, in calculating the Fund=E2=80=99s NAV, any Fund holdings for wh=
+ich current and reliable market quotations are not readily available =E2=80=
+=9Care valued at their respective fair values as determined in good faith b=
+y [the] Adviser=E2=80=9D1 under procedures approved and overseen by the Boa=
+rd of Trustees of the Trust (the =E2=80=9CBoard=E2=80=9D). The Fund=E2=80=
+=99s current portfolio includes swap instruments (the =E2=80=9CSwaps=E2=80=
+=9D) for which Infinity Q calculates fair value using models provided by a =
+third-party pricing vendor. As of February 18, 2021, the Fund=E2=80=99s rep=
+orted NAV was derived using a valuation for these Swaps that resulted in th=
+e value of the Swaps constituting approximately 18% of the Fund=E2=80=99s r=
+eported NAV.</p><p style=3D"font-family: Helvetica, Arial, sans-serif; marg=
+in: 1em 0;">On February 18, 2021, based on information learned by the Commi=
+ssion staff and shared with Infinity Q, Infinity Q informed the Fund that I=
+nfinity Q=E2=80=99s Chief Investment Officer had been adjusting certain par=
+ameters within the third-party pricing model that affected the valuation of=
+ the Swaps. On February 19, 2021, Infinity Q informed the Fund that at such=
+ time it was unable to conclude that these adjustments were reasonable, and=
+, further, that it was unable to verify that the values it had previously d=
+etermined for the Swaps were reflective of fair value. Infinity Q also info=
+rmed the Fund that it would not be able to calculate a fair value for any o=
+f the Swaps in sufficient time to calculate an accurate NAV for at least se=
+veral days. Infinity Q and the Fund immediately began the effort to value t=
+hese Swap positions accurately to enable the Fund to calculate an NAV, whic=
+h effort includes the retention of an independent valuation expert. However=
+, Infinity Q and the Fund currently believe that establishing and verifying=
+ those alternative methods may take several days or weeks. Infinity Q and t=
+he Fund are also determining whether the fair values calculated for positio=
+ns other than the Swaps are reliable, and the extent of the impact on histo=
+rical valuations. As a result, the Fund was unable to calculate an NAV on F=
+ebruary 19, 2021, and it is uncertain when the Fund will be able to calcula=
+te an NAV that would enable it to satisfy requests for redemptions of Fund =
+shares.</p><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1=
+em 0;">The Fund and Infinity Q believe that the best course of action for c=
+urrent and former shareholders of the Fund is to liquidate the Fund in a re=
+asonable period of time, determine the extent and impact of the historical =
+valuation errors, and return the maximum amount of proceeds to such shareho=
+lders. Relief permitting the Fund to suspend redemptions and postpone the d=
+ate of payment of redemption proceeds with respect to redemption orders rec=
+eived but not yet paid will permit the Fund to arrive at a valuation for th=
+e Swaps and any other portfolio holdings for which current and reliable mar=
+ket quotations are not available, and to liquidate its holdings in an order=
+ly manner.</p></blockquote><p style=3D"font-family: Helvetica, Arial, sans-=
+serif; margin: 1em 0;">Oops! =E2=80=9CAdjusting certain parameters within t=
+he third-party pricing model that affected the valuation of the Swaps=E2=80=
+=9D is the bad thing there; well, that and =E2=80=9Cunable to conclude that=
+ these adjustments were reasonable.=E2=80=9D Oh also it will take them =E2=
+=80=9Cseveral days or weeks=E2=80=9D to figure out what their stuff is actu=
+ally worth. Here is how the fund has <a href=3D"https://link.mail.bloomberg=
+business.com/click/23024110.100944/aHR0cHM6Ly93d3cuc2VjLmdvdi9BcmNoaXZlcy9l=
+ZGdhci9kYXRhLzEyNjE3ODgvMDAwMTEwNDY1OTIwMTIyNjAwL3RtMjAzMzQxOGQyX25jc3IuaHR=
+t/5d2dffebecf12a0dad4db039C16cfb6ca" itemprop=3D"StoryLink" itemscope=3D"it=
+emscope" style=3D"color: black; text-decoration: none !important; border-bo=
+ttom-width: 1px; border-bottom-color: black; border-bottom-style: solid; ba=
+ckground-color: #ccc;">described=C2=A0its valuation methods</a>:</p><blockq=
+uote><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;"=
+>The Fund makes investments in various types of volatility and variance swa=
+ps. The Adviser deems vanilla volatility and index barrier variance swaps a=
+s Level 2 positions, and common stock barrier and corridor variance swaps a=
+s Level 3 positions in the fair value hierarchy. The Fund uses a pricing se=
+rvice to model price the variance swap trades. The pricing service uses quo=
+tes from brokers to estimate implied volatility levels as an input to these=
+ models. A significant change in implied volatility could have a significan=
+t impact on the value of a position.</p><p style=3D"font-family: Helvetica,=
+ Arial, sans-serif; margin: 1em 0;">The Fund makes dispersion investments u=
+sing volatility and variance swaps and options on dispersion. The Adviser d=
+eems these positions to be illiquid and classifies these positions as Level=
+ 3 in the fair value hierarchy. The Adviser uses model pricing to calculate=
+ the fair volatility level for each leg of the dispersion trade. The Advise=
+r uses quotes from a pricing service and brokers to estimate implied volati=
+lity levels as an input to these models. A significant change in implied vo=
+latility could have a significant impact on the value of a position, and de=
+pending on the direction of the change, could either increase or decrease a=
+ position's value.</p><p style=3D"font-family: Helvetica, Arial, sans-serif=
+; margin: 1em 0;">The Fund makes cross-asset correlation investments using =
+correlation and covariance swaps. The Adviser deems these positions to be i=
+lliquid and classifies these positions as Level 3 in the fair value hierarc=
+hy. The Adviser uses a third party calculation agent to value these positio=
+ns. The local volatility model is used to calculate the fair correlation le=
+vel for correlation swaps. Quotes from a pricing service are used to estima=
+te the implied correlation levels as an input to these models. A significan=
+t change in implied volatility could have a significant impact on the value=
+ of a position, and depending on the direction of the change, could either =
+increase or decrease a position's value.</p></blockquote><p style=3D"font-f=
+amily: Helvetica, Arial, sans-serif; margin: 1em 0;">Level 1 assets have ma=
+rket prices; level 2 assets have values that can be computed from other obs=
+ervable inputs; level 3 assets have =E2=80=9Csignificant unobservable input=
+s, including the Fund's own assumptions in determining fair value of invest=
+ments.=E2=80=9D=C2=A0If you own a complex and illiquid enough financial ins=
+trument, you can kind of say it=E2=80=99s worth whatever you want=E2=80=94j=
+ust adjust some parameters=E2=80=94and people will, for a time, believe you=
+. Infinity Q seems to have stopped believing its CIO=E2=80=99s valuations. =
+(<a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.100944/a=
+HR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjEtMDItMjIvaW5maW5p=
+dHktcS1mdW5kLXNlZWtzLXNlYy1wZXJtaXNzaW9uLXRvLXN1c3BlbmQtcmVkZW1wdGlvbnM/5d2=
+dffebecf12a0dad4db039Be9a912e9" itemprop=3D"StoryLink" itemscope=3D"itemsco=
+pe" style=3D"color: black; text-decoration: none !important; border-bottom-=
+width: 1px; border-bottom-color: black; border-bottom-style: solid; backgro=
+und-color: #ccc;"> His lawyers say</a>:=C2=A0=E2=80=9COur client has acted =
+in good faith throughout his tenure at Infinity Q and will continue to do s=
+o moving forward. His focus has always been on delivering and preserving va=
+lue for investors.=E2=80=9D)</p>
+<table border=3D"0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+<tr>
+<td style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; padding: 14px 0px;">
+<table class=3D"sponsored-content" width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" bgcolor=3D"#f0f0f0">
+<tbody>
+<tr>
+<td style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; padding: 15px 15px 0px 15px;">
+<img width=3D"550" class=3D"sponsored-content__image" src=3D"https://assets=
+.bwbx.io/images/users/iqjWHBFdfxIU/ibIleai9f.PE/v0/-1x-1.jpg" style=3D"widt=
+h: 100%; display: block; max-width: 550px; max-height: 150px;" />
+</td>
+</tr>
+<tr>
+<td style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt;">
+<div style=3D"margin: 15px">
+<div class=3D"sponsored-content__headline" style=3D"font-family: Helvetica,=
+ Arial, sans-serif; font-size: 20px; font-weight: bold; line-height: 1.2;">=
+Paid Post</div>
+<div class=3D"sponsored-content__text" style=3D"font-family: Helvetica, Ari=
+al, sans-serif; font-size: 14px; line-height: 1.3;"><p style=3D"margin: 10p=
+x 0px;"><span><span><span><span><span><span><span><span><span><span><span><=
+span><span><strong><span><span><span><span>People are (still) worried about=
+ financial models</span></span></span></span></strong></span></span></span>=
+</span></span></span></span></span></span></span></span></span></span></p>
+<p style=3D"margin: 10px 0px;"><span><span><span><span><span><span><span><s=
+pan><span><span><span><span><span><span><span><span><span>When hundreds of =
+companies report this week,=C2=A0</span></span></span></span><a href=3D"htt=
+ps://link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly9jYW5h=
+bHlzdC5jb20vP3V0bV9zb3VyY2U9Qmxvb21iZXJnJnV0bV9tZWRpdW09U3BvbnNvcmVkX0NvbnR=
+lbnQmdXRtX2NhbXBhaWduPU1vbmV5X1N0dWZmX25ld3NsZXR0ZXImdXRtX3Rlcm09QWRfNiZ1dG=
+1fY29udGVudD1DYW5hbHlzdA/5d2dffebecf12a0dad4db039Bf0760958" itemprop=3D"Sto=
+ryLink" itemscope=3D"itemscope" target=3D"_blank" title=3D"Canalyst" style=
+=3D"color: #000000; text-decoration: underline;"><span><span><span><span>Ca=
+nalyst</span></span></span></span></a><span><span><span><span> clients will=
+ have updated models within hours of the press release. They'll=C2=A0spend =
+more time on analysis, and less on data entry, thanks to=C2=A0</span></span=
+></span></span><span>exceptional accuracy and coverage. Get your head start=
+ with a=C2=A0<a href=3D"https://link.mail.bloombergbusiness.com/click/23024=
+110.100944/aHR0cHM6Ly9pbmZvLmNhbmFseXN0LmNvbS9tb25leXN0dWZmP3V0bV9zb3VyY2U9=
+Qmxvb21iZXJnJnV0bV9tZWRpdW09U3BvbnNvcmVkX0NvbnRlbnQmdXRtX2NhbXBhaWduPU1vbmV=
+5X1N0dWZmX25ld3NsZXR0ZXImdXRtX3Rlcm09QWRfNiZ1dG1fY29udGVudD1mcmVlX3RyaWFs/5=
+d2dffebecf12a0dad4db039B2f68b6f8" itemprop=3D"StoryLink" itemscope=3D"items=
+cope" target=3D"_blank" title=3D"free trial" style=3D"color: #000000; text-=
+decoration: underline;">free trial</a></span><span><span><span><span> today=
+.</span></span></span></span></span></span></span></span></span></span></sp=
+an></span></span></span></span></span></span></p></div>
+<div class=3D"sponsored-content__name" style=3D"font-family: Helvetica, Ari=
+al, sans-serif; font-size: 15px; line-height: 1.3; font-weight: bold;"><p s=
+tyle=3D"margin: 10px 0px;">Canalyst</p></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+<h2 style=3D"color: #000000; font-weight: bold; font-family: Arial Black, A=
+rial, Helvetica, sans-serif; letter-spacing: -1px; font-size: 20px !importa=
+nt; border-bottom-width: 1px; border-bottom-color: #000000; border-bottom-s=
+tyle: dotted; padding-bottom: 5px; margin-top: 30px; margin-bottom: 0;">How=
+=E2=80=99s GameStop doing?</h2><p style=3D"font-family: Helvetica, Arial, s=
+ans-serif; margin: 1em 0;">Come on <a href=3D"https://link.mail.bloombergbu=
+siness.com/click/23024110.100944/aHR0cHM6Ly93d3cud3NqLmNvbS9hcnRpY2xlcy9nYW=
+1lc3RvcC1zaGFyZXMtc3VyZ2UtYWZ0ZXItcmVkZGl0LWxlZ2VuZC1rZWl0aC1naWxsLWRvdWJsZ=
+XMtZG93bi0xMTYxNDAwODExNz9tb2Q9aXRwX3dzaiZydT15YWhvbw/5d2dffebecf12a0dad4db=
+039B833f5146" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"color=
+: black; text-decoration: none !important; border-bottom-width: 1px; border=
+-bottom-color: black; border-bottom-style: solid; background-color: #ccc;">=
+with this</a>:</p><blockquote><p style=3D"font-family: Helvetica, Arial, sa=
+ns-serif; margin: 1em 0;">GameStop Corp.=C2=A0shares surged Monday, continu=
+ing an epic journey for the videogame retailer.</p><p style=3D"font-family:=
+ Helvetica, Arial, sans-serif; margin: 1em 0;">The stock jumped 13% to $46,=
+ reversing a string of losses to post its biggest gain in more than two wee=
+ks. The shares have lost about nine-tenths of their value since cresting at=
+ $483 in intraday trading late last month.</p><p style=3D"font-family: Helv=
+etica, Arial, sans-serif; margin: 1em 0;">The latest large swing in the com=
+pany=E2=80=99s shares comes after Keith Gill, the man behind the Reddit-dri=
+ven frenzy in GameStop stock, disclosed a larger stake in it late Friday. A=
+ new screenshot posted on Reddit by DeepF---ingValue, his online username, =
+showed that he bought an additional 50,000 shares, bringing his total stock=
+holdings to 100,000 shares, worth roughly $4 million as of Friday, The Wall=
+ Street Journal reported.</p></blockquote><p style=3D"font-family: Helvetic=
+a, Arial, sans-serif; margin: 1em 0;">Sometimes a big investor or insider w=
+ill buy stock in a company and will disclose the buying on <a href=3D"https=
+://link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cuaW=
+52ZXN0b3IuZ292L2ludHJvZHVjdGlvbi1pbnZlc3RpbmcvaW52ZXN0aW5nLWJhc2ljcy9nbG9zc=
+2FyeS9zY2hlZHVsZXMtMTNkLWFuZC0xM2c/5d2dffebecf12a0dad4db039B99ee4689" itemp=
+rop=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: black; text-decor=
+ation: none !important; border-bottom-width: 1px; border-bottom-color: blac=
+k; border-bottom-style: solid; background-color: #ccc;">Schedule 13D or 13G=
+</a>=C2=A0or <a href=3D"https://link.mail.bloombergbusiness.com/click/23024=
+110.100944/aHR0cHM6Ly93d3cuaW52ZXN0b3IuZ292L2ludHJvZHVjdGlvbi1pbnZlc3Rpbmcv=
+aW52ZXN0aW5nLWJhc2ljcy9nbG9zc2FyeS9mb3JtLTEzZi1yZXBvcnRzLWZpbGVkLWluc3RpdHV=
+0aW9uYWwtaW52ZXN0bWVudA/5d2dffebecf12a0dad4db039B87c94ae0" itemprop=3D"Stor=
+yLink" itemscope=3D"itemscope" style=3D"color: black; text-decoration: none=
+ !important; border-bottom-width: 1px; border-bottom-color: black; border-b=
+ottom-style: solid; background-color: #ccc;">13F</a>=C2=A0or <a href=3D"htt=
+ps://link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cu=
+c2VjLmdvdi9maWxlcy9mb3Jtcy0zLTQtNS5wZGY/5d2dffebecf12a0dad4db039B467ee1ef" =
+itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: black; text-=
+decoration: none !important; border-bottom-width: 1px; border-bottom-color:=
+ black; border-bottom-style: solid; background-color: #ccc;">Form 4</a>, of=
+ficial forms filed with the U.S. Securities and Exchange Commission, and in=
+vestors will get excited and will buy more stock to copy what the big inves=
+tor or insider is doing. This is basically the same except (1) Gill owns ro=
+ughly 0.14% of the company and has no inside information and (2) instead of=
+ disclosing his holdings on official SEC forms that are required by law, he=
+=E2=80=99s posting screenshots of his brokerage statement on Reddit.</p><p =
+style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">Does Ro=
+aring Kitty (Gill=E2=80=99s YouTube and Twitter username, which I prefer to=
+ his real name and his less printable Reddit name) control this stock now? =
+Is he the <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110=
+.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9vcGluaW9uL2FydGljbGVzLzIwMjEtMDI=
+tMTAvZWxvbi1tdXNrLXR3ZWV0cy1ncmVhdC1uZXdzLWZvci1iaXRjb2luLWJhZC1uZXdzLWZvci=
+1lY29uLW1ham9ycw/5d2dffebecf12a0dad4db039B2f27c47d" itemprop=3D"StoryLink" =
+itemscope=3D"itemscope" style=3D"color: black; text-decoration: none !impor=
+tant; border-bottom-width: 1px; border-bottom-color: black; border-bottom-s=
+tyle: solid; background-color: #ccc;"> Elon Musk</a> of GameStop? Is buying=
+ GameStop stock just a way to associate yourself with Roaring Kitty=E2=80=
+=99s ineffable coolness, rather than any particular bet on its future cash =
+flows? Can he make it go up by saying =E2=80=9CI like the stock,=E2=80=9D a=
+nd make it go down by, like, going a day without saying that?</p><h2 style=
+=3D"color: #000000; font-weight: bold; font-family: Arial Black, Arial, Hel=
+vetica, sans-serif; letter-spacing: -1px; font-size: 20px !important; borde=
+r-bottom-width: 1px; border-bottom-color: #000000; border-bottom-style: dot=
+ted; padding-bottom: 5px; margin-top: 30px; margin-bottom: 0;">WeSettle</h2=
+><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">See=
+ms like a <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110=
+.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjEtMDItMjI=
+vd2V3b3JrLWNvLWZvdW5kZXItbmV1bWFubi1uZWFycy1zZXR0bGVtZW50LXdpdGgtc29mdGJhbm=
+s/5d2dffebecf12a0dad4db039B927d8b48" itemprop=3D"StoryLink" itemscope=3D"it=
+emscope" style=3D"color: black; text-decoration: none !important; border-bo=
+ttom-width: 1px; border-bottom-color: black; border-bottom-style: solid; ba=
+ckground-color: #ccc;"> reasonable compromise</a>:</p><blockquote><p style=
+=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">WeWork Co-Fo=
+under Adam Neumann is in advanced talks to settle his lawsuit against the c=
+o-working company=E2=80=99s biggest backer SoftBank Group Corp., according =
+to people familiar with the matter.</p><p style=3D"font-family: Helvetica, =
+Arial, sans-serif; margin: 1em 0;">Under the terms of the potential settlem=
+ent, SoftBank would purchase half of the WeWork shares it originally agreed=
+ to buy in 2019, said one the people, who asked not to be identified becaus=
+e the talks are still private. That means Neumann would be able to sell clo=
+se to $500 million in stock, and that SoftBank would pay about $1.5 billion=
+ overall. The shares are being sold at the same price agreed upon in 2019, =
+the person said.</p><p style=3D"font-family: Helvetica, Arial, sans-serif; =
+margin: 1em 0;">The deal would mean Neumann sells about a quarter of his po=
+sition in WeWork and remains a major shareholder in the company, the person=
+ said, while noting the agreement isn=E2=80=99t finalized and could still c=
+hange. The agreement could also pave the way for a second attempt at a WeWo=
+rk public listing, the person added.</p></blockquote><p style=3D"font-famil=
+y: Helvetica, Arial, sans-serif; margin: 1em 0;">SoftBank agreed to buy a b=
+unch of WeWork shares from existing investors, including Neumann, after WeW=
+ork=E2=80=99s embarrassing failed IPO. Then a pandemic hit, the shares were=
+ worth less than SoftBank had agreed to pay, and it decided to get out of t=
+he deal.=C2=A0Neumann (and <a href=3D"https://link.mail.bloombergbusiness.c=
+om/click/23024110.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9vcGluaW9uL2FydG=
+ljbGVzLzIwMjAtMDQtMDcvd2V3b3JrLXdhbnRzLXNvZnRiYW5rLXMtbW9uZXk/5d2dffebecf12=
+a0dad4db039B2e326e33" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=
+=3D"color: black; text-decoration: none !important; border-bottom-width: 1p=
+x; border-bottom-color: black; border-bottom-style: solid; background-color=
+: #ccc;"> WeWork</a>) sued, demanding that SoftBank live up to the deal. Be=
+tween Neumann=E2=80=99s position (SoftBank should buy all the stock it orig=
+inally agreed to buy) and SoftBank=E2=80=99s (it should buy none of it), th=
+e obvious deal to cut is that SoftBank should buy about half the stock, and=
+ that seems to be the deal.</p><p style=3D"font-family: Helvetica, Arial, s=
+ans-serif; margin: 1em 0;">When we last talked about this, I <a href=3D"htt=
+ps://link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cu=
+Ymxvb21iZXJnLmNvbS9vcGluaW9uL2FydGljbGVzLzIwMjAtMDUtMDUvd2V3b3JrLXdpbGwtc2V=
+lLXNvZnRiYW5rLWluLWNvdXJ0/5d2dffebecf12a0dad4db039B21d21867" itemprop=3D"St=
+oryLink" itemscope=3D"itemscope" style=3D"color: black; text-decoration: no=
+ne !important; border-bottom-width: 1px; border-bottom-color: black; border=
+-bottom-style: solid; background-color: #ccc;"> wrote that</a> a trial in t=
+his case (which is now scheduled to start March 4) would be embarrassing fo=
+r both sides, and that =E2=80=9Cboth sides have incentives to settle,=E2=80=
+=9D but I also noted that Neumann and SoftBank=E2=80=99s Masayoshi Son both=
+ seem pretty much immune to embarrassment and =E2=80=9Care not people who w=
+ill back down from confrontation just because it might make them look bad.=
+=E2=80=9D Still. The difference now is that, with the current SPAC boom, We=
+Work could try again to go public, which is (1)=C2=A0probably worth a lot o=
+f money to both Neumann and Son but (2) hard to do when everyone is still s=
+uing each other. Might as well cut a quick deal with each other and sell yo=
+ur stock to a SPAC while you can.</p><h2 style=3D"color: #000000; font-weig=
+ht: bold; font-family: Arial Black, Arial, Helvetica, sans-serif; letter-sp=
+acing: -1px; font-size: 20px !important; border-bottom-width: 1px; border-b=
+ottom-color: #000000; border-bottom-style: dotted; padding-bottom: 5px; mar=
+gin-top: 30px; margin-bottom: 0;">Insider fantasy soccer</h2><p style=3D"fo=
+nt-family: Helvetica, Arial, sans-serif; margin: 1em 0;"><a href=3D"https:/=
+/link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cuZGFp=
+bHltYWlsLmNvLnVrL3Nwb3J0L2Zvb3RiYWxsL2FydGljbGUtOTI4ODI4Ny9Bc3Rvbi1WaWxsYS1=
+CQU4tc3F1YWQtRmFudGFzeS1QcmVtaWVyLUxlYWd1ZS1HcmVhbGlzaHMtaW5qdXJ5LWxlYWtlZC=
+5odG1s/5d2dffebecf12a0dad4db039B3d646fe6" itemprop=3D"StoryLink" itemscope=
+=3D"itemscope" style=3D"color: black; text-decoration: none !important; bor=
+der-bottom-width: 1px; border-bottom-color: black; border-bottom-style: sol=
+id; background-color: #ccc;">Hahahaha</a>:</p><blockquote><p style=3D"font-=
+family: Helvetica, Arial, sans-serif; margin: 1em 0;">Aston Villa have bann=
+ed their squad from playing Fantasy Premier League after inside information=
+ regarding Jack Grealish=E2=80=99s injury was leaked last week.</p><p style=
+=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">The fitness =
+of Villa=E2=80=99s captain before the defeat by Leicester was the subject o=
+f rumours on social media on Friday night.=C2=A0</p><p style=3D"font-family=
+: Helvetica, Arial, sans-serif; margin: 1em 0;">The Twitter account FPL Ins=
+ider reported that multiple Villa players and staff had transferred Grealis=
+h out of their dream teams. =E2=80=A6</p><p style=3D"font-family: Helvetica=
+, Arial, sans-serif; margin: 1em 0;">Transfers are confirmed on the Fantasy=
+ Premier League website 90 minutes before the weekend=E2=80=99s first fixtu=
+re, meaning anyone who knows where to look could see Grealish had been tran=
+sferred out of his team-mates=E2=80=99 sides before Wolves faced Leeds on F=
+riday =E2=80=94 two days before Villa hosted Leicester.</p><p style=3D"font=
+-family: Helvetica, Arial, sans-serif; margin: 1em 0;">Many players have Fa=
+ntasy Premier League teams and it is not possible for users to make their a=
+ccounts private, meaning anyone who knows where to look can see their activ=
+ity.</p></blockquote><p style=3D"font-family: Helvetica, Arial, sans-serif;=
+ margin: 1em 0;">Generally the way fantasy sports works is that you get poi=
+nts for stuff that people on your fantasy team do each week; if someone on =
+your team doesn=E2=80=99t do anything=E2=80=94because he=E2=80=99s injured =
+or otherwise not in the lineup in real life=E2=80=94he doesn=E2=80=99t get =
+you any points. If you know he=E2=80=99s injured, you should take him off y=
+our team. If you sit next to him in the locker room, you might have inside =
+information about his injuries. If your own fantasy-sports trades are=C2=A0=
+<em>public</em>, under your=C2=A0<em>actual name</em>, then that inside inf=
+ormation might leak.</p><p style=3D"font-family: Helvetica, Arial, sans-ser=
+if; margin: 1em 0;">The obvious solution, which Aston Villa has come to her=
+e, is=C2=A0<em>not to let athletes gamble on their own sport</em>, even the=
+ not-quite-gambling of fantasy sports, but there are gentler solutions. =E2=
+=80=9CThis open source of information is a concern for several clubs and <e=
+m>Sportsmail</em> understands most will tell their players to stop selectin=
+g team-mates to prevent situations such as this.=E2=80=9D Isn=E2=80=99t tha=
+t a good idea anyway? Isn=E2=80=99t it awkward to have some of your real-li=
+fe teammates on your fantasy team, and others not? Don=E2=80=99t you want t=
+o bet on all of your teammates? If you=E2=80=99ve got the ball and one team=
+mate is in a really good scoring position, but he=E2=80=99s not on your fan=
+tasy team, and another teammate is in a less promising position but he=C2=
+=A0<em>is=C2=A0</em>on your fantasy team, who do you pass to?</p><h2 style=
+=3D"color: #000000; font-weight: bold; font-family: Arial Black, Arial, Hel=
+vetica, sans-serif; letter-spacing: -1px; font-size: 20px !important; borde=
+r-bottom-width: 1px; border-bottom-color: #000000; border-bottom-style: dot=
+ted; padding-bottom: 5px; margin-top: 30px; margin-bottom: 0;">So Long Bloc=
+kchain</h2><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1=
+em 0;">It <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110=
+.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjEtMDItMjI=
+vbG9uZy1ibG9ja2NoYWluLWRlbGlzdGVkLWJ5LXNlYy1hZnRlci1yaWRpbmctMjAxNy1zLWNyeX=
+B0by1jcmF6ZQ/5d2dffebecf12a0dad4db039Be15a05e7" itemprop=3D"StoryLink" item=
+scope=3D"itemscope" style=3D"color: black; text-decoration: none !important=
+; border-bottom-width: 1px; border-bottom-color: black; border-bottom-style=
+: solid; background-color: #ccc;"> was a good run</a>, I guess:</p><blockqu=
+ote><p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">=
+Long Blockchain Corp., the former iced-tea company that became a poster chi=
+ld of crypto-investment excesses, had its shares delisted by U.S. regulator=
+s after failing to file financial reports for years.</p><p style=3D"font-fa=
+mily: Helvetica, Arial, sans-serif; margin: 1em 0;">Long Blockchain, which =
+changed its name from Long Island Ice Tea Corp. in 2017, had been trading o=
+ver-the-counter since Nasdaq kicked it off its exchange in 2018, the Securi=
+ties and Exchange Commission said in an order. The SEC officially pulled th=
+e Farmingdale, New York-based company=E2=80=99s registration Monday, citing=
+ the fact that the last time it filed a financial report was for the quarte=
+r ended Sept. 30, 2018. ...</p><p style=3D"font-family: Helvetica, Arial, s=
+ans-serif; margin: 1em 0;">In its order, the SEC said Long Blockchain=E2=80=
+=99s shift from making soft drinks to blockchain technology never materiali=
+zed.</p></blockquote><p style=3D"font-family: Helvetica, Arial, sans-serif;=
+ margin: 1em 0;">Here is <a href=3D"https://link.mail.bloombergbusiness.com=
+/click/23024110.100944/aHR0cHM6Ly93d3cuc2VjLmdvdi9saXRpZ2F0aW9uL2FkbWluLzIw=
+MjEvMzQtOTExNzQucGRm/5d2dffebecf12a0dad4db039B014729b2" itemprop=3D"StoryLi=
+nk" itemscope=3D"itemscope" style=3D"color: black; text-decoration: none !i=
+mportant; border-bottom-width: 1px; border-bottom-color: black; border-bott=
+om-style: solid; background-color: #ccc;">the SEC order</a>. Here is what I=
+ <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.100944/a=
+HR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9vcGluaW9uL2FydGljbGVzLzIwMTctMTItMjEvYmxv=
+Y2tjaGFpbnMtZ28td2VsbC13aXRoLWNvY2t0YWlscw/5d2dffebecf12a0dad4db039B5fec67b=
+a" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: black; te=
+xt-decoration: none !important; border-bottom-width: 1px; border-bottom-col=
+or: black; border-bottom-style: solid; background-color: #ccc;"> wrote abou=
+t Long Blockchain in 2017</a>, when it called the absolute top of the prete=
+nding-to-pivot-to-blockchain trend. I am not sure that there has ever been =
+a financial-news story as purely and perfectly stupid as this one, or that =
+there ever will be again. I=E2=80=99ll pour out a non-alcoholic Long Island=
+ Iced Tea for Long Blockchain.=C2=A0</p><h2 style=3D"color: #000000; font-w=
+eight: bold; font-family: Arial Black, Arial, Helvetica, sans-serif; letter=
+-spacing: -1px; font-size: 20px !important; border-bottom-width: 1px; borde=
+r-bottom-color: #000000; border-bottom-style: dotted; padding-bottom: 5px; =
+margin-top: 30px; margin-bottom: 0;">Here is Michael Bolton singing a song =
+about payment for order flow</h2><p style=3D"font-family: Helvetica, Arial,=
+ sans-serif; margin: 1em 0;"><a href=3D"https://link.mail.bloombergbusiness=
+.com/click/23024110.100944/aHR0cHM6Ly90d2l0dGVyLmNvbS9wdWJsaWMvc3RhdHVzLzEz=
+NjQyMTg3ODY3NTc0MTkwMTE/5d2dffebecf12a0dad4db039B481084d2" itemprop=3D"Stor=
+yLink" itemscope=3D"itemscope" style=3D"color: black; text-decoration: none=
+ !important; border-bottom-width: 1px; border-bottom-color: black; border-b=
+ottom-style: solid; background-color: #ccc;">Really</a>!</p><h2 style=3D"co=
+lor: #000000; font-weight: bold; font-family: Arial Black, Arial, Helvetica=
+, sans-serif; letter-spacing: -1px; font-size: 20px !important; border-bott=
+om-width: 1px; border-bottom-color: #000000; border-bottom-style: dotted; p=
+adding-bottom: 5px; margin-top: 30px; margin-bottom: 0;">Things happen</h2>=
+<p style=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;">Texa=
+ns Will <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.1=
+00944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjEtMDItMjIvd=
+GV4YW5zLXdpbGwtcGF5LWZvci10aGUtc3RhdGUtcy1wb3dlci1jcmlzaXMtZm9yLWRlY2FkZXMt=
+dG8tY29tZQ/5d2dffebecf12a0dad4db039Be9e89fa4" itemprop=3D"StoryLink" itemsc=
+ope=3D"itemscope" style=3D"color: black; text-decoration: none !important; =
+border-bottom-width: 1px; border-bottom-color: black; border-bottom-style: =
+solid; background-color: #ccc;"> Pay for Decades</a> as Crisis Tacks Billio=
+ns Onto Bills. Bitcoin <a href=3D"https://link.mail.bloombergbusiness.com/c=
+lick/23024110.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLz=
+IwMjEtMDItMjMvYml0Y29pbi1yZXRyZWF0cy1hZnRlci1zd2luZ3MtaGlnaGxpZ2h0ZWQtdGhlL=
+XJpc2stb2Ytdm9sYXRpbGl0eQ/5d2dffebecf12a0dad4db039Bba58b599" itemprop=3D"St=
+oryLink" itemscope=3D"itemscope" style=3D"color: black; text-decoration: no=
+ne !important; border-bottom-width: 1px; border-bottom-color: black; border=
+-bottom-style: solid; background-color: #ccc;"> Tumbles Below $50,000</a> a=
+s Caution Sweeps Over Crypto. Debt Markets Brace for <a href=3D"https://lin=
+k.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cuYmxvb21i=
+ZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjEtMDItMjMvZGVidC1tYXJrZXRzLWJyYWNlLWZvci1=
+oaWdoZXIteWllbGRzLXRvLXN0YXktYXMtc3RpbXVsdXMtc2V0cy1pbg/5d2dffebecf12a0dad4=
+db039B377af69d" itemprop=3D"StoryLink" itemscope=3D"itemscope" style=3D"col=
+or: black; text-decoration: none !important; border-bottom-width: 1px; bord=
+er-bottom-color: black; border-bottom-style: solid; background-color: #ccc;=
+"> Higher Yields</a> to Stay as Stimulus Sets In.=C2=A0 A Star Trader Turns=
+ Star Witness in <a href=3D"https://link.mail.bloombergbusiness.com/click/2=
+3024110.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjEt=
+MDItMjMvZnJvbS1zdGFyLXBlcmZvcm1lci10by1zdGFyLXdpdG5lc3MtYS1jdW0tZXgtdHJhZGV=
+yLWNvb3BlcmF0ZXM/5d2dffebecf12a0dad4db039B7d74d8ba" itemprop=3D"StoryLink" =
+itemscope=3D"itemscope" style=3D"color: black; text-decoration: none !impor=
+tant; border-bottom-width: 1px; border-bottom-color: black; border-bottom-s=
+tyle: solid; background-color: #ccc;"> $12 Billion Tax Scandal</a>.=C2=A0Wh=
+y an <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.1009=
+44/aHR0cHM6Ly93d3cubnl0aW1lcy5jb20vMjAyMS8wMi8yMi9idXNpbmVzcy9uZnQtbmJhLXRv=
+cC1zaG90LWNyeXB0by5odG1s/5d2dffebecf12a0dad4db039Ba314a3f9" itemprop=3D"Sto=
+ryLink" itemscope=3D"itemscope" style=3D"color: black; text-decoration: non=
+e !important; border-bottom-width: 1px; border-bottom-color: black; border-=
+bottom-style: solid; background-color: #ccc;">Animated Flying Cat</a> With =
+a Pop-Tart Body Sold for Almost $600,000.=C2=A0</p><p style=3D"font-family:=
+ Helvetica, Arial, sans-serif; margin: 1em 0;"><span class=3D"news-designed=
+-for-consumer-media"><em>If you'd like to get=C2=A0Money=C2=A0Stuff=C2=A0in=
+ handy email form, right in your inbox, please=C2=A0<a href=3D"https://link=
+.mail.bloombergbusiness.com/click/23024110.100944/aHR0cDovL2xpbmsubWFpbC5ib=
+G9vbWJlcmdidXNpbmVzcy5jb20vam9pbi80d20vbW9uZXlzdHVmZi1zaWdudXAmaGFzaD01NDIy=
+MzAwMWNhM2ZmY2Y0MGYyNjI5YzI1YWNlYTY3YQ/5d2dffebecf12a0dad4db039Bdda66688" t=
+arget=3D"_blank" style=3D"color: black; text-decoration: none !important; b=
+order-bottom-width: 1px; border-bottom-color: black; border-bottom-style: s=
+olid; background-color: #ccc;">subscribe at this link</a>. Or you can subsc=
+ribe to Money Stuff and other great Bloomberg newsletters <a href=3D"https:=
+//link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly9sb2dpbi5=
+ibG9vbWJlcmcuY29tL25ld3NsZXR0ZXJz/5d2dffebecf12a0dad4db039Bf9d26518" itempr=
+op=3D"StoryLink" itemscope=3D"itemscope" style=3D"color: black; text-decora=
+tion: none !important; border-bottom-width: 1px; border-bottom-color: black=
+; border-bottom-style: solid; background-color: #ccc;">here</a>. Thanks!</e=
+m></span></p><p style=3D"font-family: Helvetica, Arial, sans-serif; margin:=
+ 1em 0;"><em>[1] This is all very approximate and ignores <a href=3D"https:=
+//link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cuYmx=
+vb21iZXJnLmNvbS9uZXdzL25ld3NsZXR0ZXJzLzIwMjEtMDEtMDgvbW9uZXktc3R1ZmYtc3BhYy=
+1tYWdpYy1pc24tdC1mcmVl/5d2dffebecf12a0dad4db039Ba1a0cf72" itemprop=3D"Story=
+Link" itemscope=3D"itemscope" style=3D"color: black; text-decoration: none =
+!important; border-bottom-width: 1px; border-bottom-color: black; border-bo=
+ttom-style: solid; background-color: #ccc;"> warrants</a>, <a href=3D"https=
+://link.mail.bloombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cuYm=
+xvb21iZXJnLmNvbS9vcGluaW9uL2FydGljbGVzLzIwMjAtMDctMjcvc3BhY3MtYXJlbi10LWNoZ=
+WFwZXItdGhhbi1pcG9zLXlldA/5d2dffebecf12a0dad4db039B0e14d25b" itemprop=3D"St=
+oryLink" itemscope=3D"itemscope" style=3D"color: black; text-decoration: no=
+ne !important; border-bottom-width: 1px; border-bottom-color: black; border=
+-bottom-style: solid; background-color: #ccc;"> sponsor promotes</a>, etc. =
+All of those things make this negotiation *harder*=E2=80=94they essentially=
+ mean that the SPAC is demanding *free* shares for itself, shares beyond th=
+e ones it=E2=80=99s buying at=C2=A0$10 per share=E2=80=94but the problem in=
+ the text is hard enough without those complications.=C2=A0</em></p><p styl=
+e=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;"><em>[2] Tha=
+t is complicated by the fact that SPACs have <a href=3D"https://link.mail.b=
+loombergbusiness.com/click/23024110.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNv=
+bS9uZXdzL25ld3NsZXR0ZXJzLzIwMjEtMDEtMDgvbW9uZXktc3R1ZmYtc3BhYy1tYWdpYy1pc24=
+tdC1mcmVl/5d2dffebecf12a0dad4db039Ca1a0cf72" itemprop=3D"StoryLink" itemsco=
+pe=3D"itemscope" style=3D"color: black; text-decoration: none !important; b=
+order-bottom-width: 1px; border-bottom-color: black; border-bottom-style: s=
+olid; background-color: #ccc;"> redemption=C2=A0rights</a>: If you don=E2=
+=80=99t like the deal, you can take your $10=C2=A0back, which means SPACs n=
+eed to be quite careful to strike deals that will command enough support. S=
+till you can have a deal that trades above $10 initially and disappoints in=
+vestors after the deal closes and redemption is no longer available. And in=
+ fact, <a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.10=
+0944/aHR0cHM6Ly9wYXBlcnMuc3Nybi5jb20vc29sMy9wYXBlcnMuY2ZtP2Fic3RyYWN0X2lkPT=
+M3MjA5MTk/5d2dffebecf12a0dad4db039B74ba8924" itemprop=3D"StoryLink" itemsco=
+pe=3D"itemscope" style=3D"color: black; text-decoration: none !important; b=
+order-bottom-width: 1px; border-bottom-color: black; border-bottom-style: s=
+olid; background-color: #ccc;">historically</a>, =E2=80=9Cfor a large major=
+ity of SPACs, post-merger share prices fall.=E2=80=9D The current dynamic o=
+f high-profile SPACs having huge pops is not at all universal.</em></p><p s=
+tyle=3D"font-family: Helvetica, Arial, sans-serif; margin: 1em 0;"><em>[3] =
+Incidentally, one of the PIPE investors is the Saudi PIF, which is also a b=
+ig existing investor. So the Saudis are effectively selling stock (rather, =
+getting diluted) at $10 per share (to the SPAC), and also buying stock at $=
+15 per share (in the PIPE). It is just not very tidy.</em></p>
+</td>
+</tr>
+</table>
+<table class=3D"social_component" width=3D"100%" style=3D"width: 100%;">
+<tr>
+<td style=3D"border-top-width: 1px; border-top-style: dotted; border-bottom=
+-width: 1px; border-bottom-style: dotted; border-collapse: collapse; mso-ta=
+ble-lspace: 0pt; mso-table-rspace: 0pt; text-transform: uppercase; font-fam=
+ily: Arial; font-size: 12px; font-weight: normal; font-style: normal; font-=
+stretch: normal; line-height: 1.17; letter-spacing: normal; border-right-wi=
+dth: 10px; border-right-color: white; border-right-style: solid; padding: 9=
+px 0;">
+<span style=3D"margin-right: 4px; vertical-align: middle;">Follow Us</span>
+<a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.100944/aH=
+R0cHM6Ly93d3cuZmFjZWJvb2suY29tL2Jsb29tYmVyZ29waW5pb24/5d2dffebecf12a0dad4db=
+039Bb51515c9" style=3D"text-decoration: none; color: #000;">
+<img src=3D"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iSTidtzUTVno/v=
+0/-1x-1.png" width=3D"20" height=3D"20" style=3D"max-width: 550px; vertical=
+-align: middle; width: 20px !important; height: 20px !important;" />
+</a>
+<a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.100944/aH=
+R0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9ibG9vbWJlcmdvcGluaW9uLw/5d2dffebecf12a0dad=
+4db039Be703bba7" style=3D"text-decoration: none; color: #000;">
+<img src=3D"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ivgKTIiTGA3M/v=
+0/-1x-1.png" width=3D"20" height=3D"20" style=3D"max-width: 550px; vertical=
+-align: middle; width: 20px !important; height: 20px !important;" />
+</a>
+<a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.100944/aH=
+R0cHM6Ly90d2l0dGVyLmNvbS9ib3Bpbmlvbg/5d2dffebecf12a0dad4db039B410e0e25" sty=
+le=3D"text-decoration: none; color: #000;">
+<img src=3D"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iD_P6YIGeql4/v=
+0/-1x-1.png" width=3D"20" height=3D"20" style=3D"max-width: 550px; vertical=
+-align: middle; width: 20px !important; height: 20px !important;" />
+</a>
+</td>
+<td style=3D"border-top-width: 1px; border-top-style: dotted; border-bottom=
+-width: 1px; border-bottom-style: dotted; border-collapse: collapse; mso-ta=
+ble-lspace: 0pt; mso-table-rspace: 0pt; text-transform: uppercase; font-fam=
+ily: Arial; font-size: 12px; font-weight: normal; font-style: normal; font-=
+stretch: normal; line-height: 1.17; letter-spacing: normal; border-left-wid=
+th: 10px; border-left-color: white; border-left-style: solid; padding: 9px =
+0;">
+<a href=3D"https://link.mail.bloombergbusiness.com/click/23024110.100944/aH=
+R0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9hY2NvdW50L25ld3NsZXR0ZXJzL21vbmV5LXN0dWZmP=
+3NvdXJjZT1OTHNoYXJl/5d2dffebecf12a0dad4db039Bf9aa56f3" style=3D"text-decora=
+tion: none; color: #000;">
+Get the newsletter
+</a>
+</td>
+</tr>
+</table>
+<table>
+<tbody>
+<tr>
+<td height=3D"20">=C2=A0</td>
+</tr>
+<tr>
+<td class=3D"bbiz-wysiwyg-content tout-label"></td>
+</tr>
+<tr>
+<td class=3D"bbiz-wysiwyg-content tout-text"><p><em><strong>Like Money Stuf=
+f?</strong></em>=C2=A0|<em>=C2=A0<a href=3D"https://link.mail.bloombergbusi=
+ness.com/click/23024110.100944/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9zdWJzY3Jp=
+cHRpb25zP3V0bV9zb3VyY2U9bmV3c2xldHRlciZ1dG1fbWVkaXVtPWVtYWlsJnV0bV9jYW1wYWl=
+nbj1tb25leXN0dWZm/5d2dffebecf12a0dad4db039Bcd4121c0" itemprop=3D"StoryLink"=
+ itemscope=3D"itemscope">
+Get=C2=A0unlimited access to Bloomberg.com</a>, where you'll find trusted, =
+data-based journalism in 120 countries around the world and expert analysis=
+ from exclusive daily newsletters.</em></p>
+<p>Before it=E2=80=99s here, it=E2=80=99s on the=C2=A0Bloomberg=C2=A0Termin=
+al.=C2=A0Find out more about how the Terminal delivers information and anal=
+ysis that financial professionals can=E2=80=99t find anywhere else.=C2=A0<a=
+ href=3D"https://link.mail.bloombergbusiness.com/click/15638356.78421/aHR0c=
+HM6Ly93d3cuYmxvb21iZXJnLmNvbS9wcm9mZXNzaW9uYWwvc29sdXRpb24vYmxvb21iZXJnLXRl=
+cm1pbmFsLw/55088ec43b35d034698d38aeBe3d4e6ab">Learn more</a>.</p></td>
+</tr>
+<tr>
+<td height=3D"20">=C2=A0</td>
+</tr>
+</tbody>
+</table>
+<table id=3D"footer" width=3D"100%" align=3D"center" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0">
+<tr>
+<td align=3D"center" style=3D"font-size: 13px; font-family: Helvetica, Aria=
+l, sans-serif; color: #666666; padding-bottom: 10px; border-collapse: colla=
+pse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> You received this mess=
+age because you are subscribed to Bloomberg's Money Stuff newsletter.</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"font-size: 13px; font-family: Helvetica, Aria=
+l, sans-serif; color: #666666; border-collapse: collapse; mso-table-lspace:=
+ 0pt; mso-table-rspace: 0pt;"><a href=3D"https://link.mail.bloombergbusines=
+s.com/click/23024110.100944/aHR0cHM6Ly9sb2dpbi5ibG9vbWJlcmcuY29tL25ld3NsZXR=
+0ZXJzP3NvdXJjZT1uZXdzbGV0dGVyX3Vuc3ViJmVtYWlsPW5hZGlyc2lkaSU0MGdtYWlsLmNvbS=
+ZoYXNoPTNlNjNmNDZjNDhkZDRiZDc3YmY3ODk4ZmU2MWFlMzU4/5d2dffebecf12a0dad4db039=
+C3f08925d" style=3D"color: #666666; text-decoration: none;" alias=3D"Unsubs=
+cribe">Unsubscribe</a> | <a href=3D"https://link.mail.bloombergbusiness.com=
+/click/23024110.100944/aHR0cDovL2Jsb29tYmVyZy5jb20/5d2dffebecf12a0dad4db039=
+B05709bbf" style=3D"color: #666666; text-decoration: none;" target=3D"_blan=
+k">Bloomberg.com</a> | <a href=3D"https://link.mail.bloombergbusiness.com/c=
+lick/23024110.100944/aHR0cDovL3d3dy5ibG9vbWJlcmcuY29tL2ZlZWRiYWNrP2FsY21waW=
+Q9bW9zdHBvcA/5d2dffebecf12a0dad4db039B4bb6f9d8" style=3D"color: #666666; te=
+xt-decoration: none;" target=3D"_blank">Contact Us</a></td>
+</tr>
+<tr>
+<td height=3D"20" align=3D"center" style=3D"font-size: 13px; font-family: H=
+elvetica, Arial, sans-serif; color: #666666; border-collapse: collapse; mso=
+-table-lspace: 0pt; mso-table-rspace: 0pt;">Bloomberg L.P. 731 Lexington, N=
+ew York, NY, 10022</td>
+</tr>
+</table>
+<!--[if mso]>
+</td></tr>
+</table>
+</center>
+<![endif]-->
+</td>
+</tr>
+</table>
+<custom name=3D"opencounter" type=3D"tracking"></custom>
+<a href=3D""><img src=3D"https://link.mail.bloombergbusiness.com/img/5d2dff=
+ebecf12a0dad4db039dphim.25w0/2b0a3352.gif" alt=3D"" border=3D"0" /></a>
+</body>
+</html>
+
+------=_Part_2154061_1119158830.1614101189602--
